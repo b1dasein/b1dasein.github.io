@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>熊艺 | 作品集 PORTFOLIO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --red: #E60012;
+            --black: #000000;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'Arial', sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 导航栏 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--black);
+            z-index: 1000;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--red);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--white);
+        }
+
+        .logo span {
+            color: var(--red);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: var(--red);
+        }
+
+/* Hero Section - 新布局 */
+.hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 45% 55%;
+    margin-top: 70px;
+    background: var(--black);
+}
+
+/* 左侧：照片区域 */
+.hero-left {
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    position: relative;
+}
+
+.hero-left::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: var(--red);
+    border-radius: 50%;
+    top: -150px;
+    left: -150px;
+    opacity: 0.3;
+}
+
+.hero-image {
+    width: 400px;
+    height: auto;
+    position: relative;
+    z-index: 2;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 6px solid var(--red);
+    box-shadow: 0 20px 60px rgba(230, 0, 18, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+    transform: scale(1.05);
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* 右侧：文字区域 */
+.hero-right {
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;  /* ← 改成左对齐 */
+    padding: 80px 100px 80px 80px;  /* ← 增加右侧内边距 */
+    position: relative;
+    overflow: visible;  /* ← 改成 visible */
+}
+
+.hero-right::before {
+    content: '作品集';
+    position: absolute;
+    font-size: 180px;  /* ← 缩小一点 */
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.05);  /* ← 更透明 */
+    writing-mode: vertical-rl;
+    right: 50px;  /* ← 调整位置 */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;  /* ← 放到文字后面 */
+}
+
+.hero-text {
+    position: relative;
+    z-index: 10;  /* ← 提高层级，确保在最上面 */
+    color: var(--white);
+    text-align: left;
+    max-width: 600px;  /* ← 限制最大宽度 */
+}
+
+.hero-text h1 {
+    font-size: 96px;
+    font-weight: 900;
+    margin-bottom: 30px;
+    letter-spacing: 8px;
+    line-height: 1.1;  /* ← 调整行高 */
+}
+
+.hero-divider {
+    width: 120px;
+    height: 6px;
+    background: var(--white);
+    margin: 30px 0;
+}
+
+.hero-name {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: 4px;
+}
+
+.hero-title {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 50px;
+    opacity: 0.95;
+    letter-spacing: 2px;
+}
+
+.arrow {
+    font-size: 48px;
+    animation: bounce 2s infinite;
+    display: inline-block;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* 响应式 */
+@media (max-width: 1024px) {
+    .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .hero-left {
+        padding: 40px;
+    }
+
+    .hero-image {
+        width: 300px;
+    }
+
+    .hero-text h1 {
+        font-size: 64px;
+    }
+
+    .hero-right::before {
+        font-size: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-image {
+        width: 250px;
+    }
+
+    .hero-text h1 {
+        font-size: 48px;
+    }
+
+    .hero-name {
+        font-size: 24px;
+    }
+
+    .hero-title {
+        font-size: 16px;
+    }
+}
+
+
+        /* Section 通用 */
+        section {
+            min-height: 100vh;
+            padding: 100px 5%;
+        }
+
+        .section-header {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .section-title-box {
+            background: var(--red);
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--white);
+            writing-mode: vertical-rl;
+            letter-spacing: 4px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .about-card {
+            background: var(--white);
+            border: 3px solid var(--black);
+            padding: 40px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .about-card:hover {
+            background: var(--red);
+            color: var(--white);
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .about-card h3 {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--black);
+            padding-bottom: 10px;
+        }
+
+        .about-card:hover h3 {
+            border-color: var(--white);
+        }
+
+        .about-card ul {
+            list-style: none;
+        }
+
+        .about-card li {
+            padding: 12px 0;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .about-card li::before {
+            content: '■ ';
+            color: var(--red);
+        }
+
+        .about-card:hover li::before {
+            color: var(--white);
+        }
+
+        /* 商业案例 */
+        .case-item {
+            background: var(--white);
+            border: 4px solid var(--black);
+            margin-bottom: 60px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .case-item:hover {
+            border-color: var(--red);
+            box-shadow: 20px 20px 0 var(--red);
+        }
+
+        .case-header {
+            background: var(--red);
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .case-title {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--white);
+        }
+
+        .case-tag {
+            background: var(--black);
+            color: var(--white);
+            padding: 10px 30px;
+            font-size: 14px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .case-body {
+            padding: 40px;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin: 40px 0;
+            border: 3px solid var(--black);
+        }
+
+        .data-item {
+            text-align: center;
+            padding: 40px;
+            border-right: 3px solid var(--black);
+            transition: all 0.3s;
+        }
+
+        .data-item:last-child {
+            border-right: none;
+        }
+
+        .data-item:hover {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .data-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--red);
+            margin-bottom: 10px;
+        }
+
+        .data-item:hover .data-number {
+            color: var(--white);
+        }
+
+        .data-label {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* 诗歌卡片 */
+        .poem-card {
+            background: var(--red);
+            color: var(--white);
+            padding: 60px;
+            border: 4px solid var(--black);
+            margin-bottom: 40px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .poem-card:hover {
+            transform: rotate(-2deg);
+            box-shadow: 20px 20px 0 var(--black);
+        }
+
+        .poem-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 120px;
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .poem-title {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--white);
+            padding-bottom: 15px;
+        }
+
+        .poem-content {
+            line-height: 2.5;
+            font-size: 16px;
+            white-space: pre-line;
+            position: relative;
+            z-index: 2;
+        }
+
+        .poem-card.alt {
+            background: var(--black);
+        }
+
+        /* 学术论文 */
+        .academic-item {
+            border: 3px solid var(--black);
+            padding: 40px;
+            margin-bottom: 40px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .academic-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--red);
+            transition: width 0.3s;
+            z-index: 0;
+        }
+
+        .academic-item:hover::before {
+            width: 100%;
+        }
+
+        .academic-item > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .academic-item:hover {
+            color: var(--white);
+        }
+
+        .academic-item h3 {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 100px 5%;
+            border-top: 8px solid var(--red);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .footer-left h2 {
+            font-size: 64px;
+            font-weight: 900;
+            color: var(--red);
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            border-left: 4px solid var(--red);
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--red);
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--red);
+        }
+
+        /* 响应式 */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .data-item {
+                border-right: none;
+                border-bottom: 3px solid var(--black);
+            }
+
+            .data-item:last-child {
+                border-bottom: none;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav>
+        <div class="logo">B<span>1</span>XIST</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#commercial">Commercial</a></li>
+            <li><a href="#academic">Academic</a></li>
+            <li><a href="#poetry">Poetry</a></li>
+            <li><a href="#essays">Essays</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+ <section class="hero">
+    <div class="hero-left">
+        <div class="hero-image">
+            <img src="profile.jpg" alt="熊艺">
+        </div>
+    </div>
+    <div class="hero-right">
+        <div class="hero-text">
+            <h1>PORTFOLIO</h1>
+            <div class="hero-divider"></div>
+            <p class="hero-name">熊艺 · XIONG YI</p>
+            <p class="hero-title">内容创作者 | 文学研究者</p>
+            <div class="arrow">↓</div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- About Me -->
+    <section id="about">
+        <div class="section-header">
+            <div class="section-title-box">
+                <h2 class="section-title">About me</h2>
+            </div>
+            <div>
+                <div style="background: var(--red); color: var(--white); padding: 40px; margin-bottom: 40px;">
+                    <h3 style="font-size: 32px; font-weight: 900; margin-bottom: 20px;">基本信息</h3>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; font-size: 16px;">
+                        <div><strong>姓名：</strong>熊艺</div>
+                        <div><strong>性别：</strong>女</div>
+                        <div><strong>年龄：</strong>23</div>
+                        <div><strong>祖籍：</strong>安徽淮南</div>
+                        <div><strong>星座：</strong>太阳摩羯、上升巨蟹</div>
+                        <div><strong>MBTI：</strong>INFJ</div>
+                        <div><strong>本科：</strong>安徽师范大学 汉语言文学</div>
+                        <div><strong>硕士：</strong>暨南大学 比较文学与世界文学</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-grid fade-in">
+            <div class="about-card">
+                <h3>01<br>内容创作者</h3>
+                <ul>
+                    <li>深度书写，涉及文化、时事、电影等多领域</li>
+                    <li>化繁为简，把复杂概念以通俗易懂的语言输出</li>
+                    <li>逻辑、创意与情感表达的结合</li>
+                    <li>内容有思想深度，也有情感温度</li>
+                </ul>
+            </div>
+            <div class="about-card">
+                <h3>02<br>文学艺术爱好者</h3>
+                <ul>
+                    <li>影评、小说、文学评论、论文……累计字数10w+</li>
+                    <li>观影量300+、读书量400+</li>
+                    <li>热爱胶片摄影、会基础PS</li>
+                </ul>
+            </div>
+            <div class="about-card">
+                <h3>03<br>新媒体运营者</h3>
+                <ul>
+                    <li>运营个人微博（粉丝500+）、小红书（粉丝800+）</li>
+                    <li>个人感悟类爆款：2500+点赞，2w+浏览</li>
+                    <li>热点讨论类爆款：1000+点赞，1w+浏览</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+ <!-- 商业案例 -->
+<section id="commercial" style="background: #f5f5f5;">
+    <div class="section-header">
+        <div class="section-title-box">
+            <h2 class="section-title">Show Case</h2>
+        </div>
+        <div>
+            <h3 style="font-size: 48px; font-weight: 900; margin-bottom: 30px;">商业项目案例</h3>
+            
+            <!-- 新增 Summary -->
+            <div style="background: var(--white); border-left: 6px solid var(--red); padding: 30px; margin-bottom: 40px; line-height: 2;">
+                <p style="font-size: 18px; font-weight: 600; color: var(--red); margin-bottom: 15px;">💼 核心能力</p>
+                <p style="font-size: 16px; color: #333; margin-bottom: 20px;">
+                    从哲学科普到品牌叙事，从新媒体运营到内容策略，我擅长将复杂概念转化为易懂的表达，用文字连接品牌与用户。
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 25px;">
+                    <div style="text-align: center; padding: 20px; background: #f9f9f9; border-radius: 8px;">
+                        <div style="font-size: 32px; font-weight: 900; color: var(--red); margin-bottom: 10px;">50+</div>
+                        <div style="font-size: 14px; color: #666;">供稿篇数</div>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: #f9f9f9; border-radius: 8px;">
+                        <div style="font-size: 32px; font-weight: 900; color: var(--red); margin-bottom: 10px;">2w+</div>
+                        <div style="font-size: 14px; color: #666;">单篇最高浏览</div>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: #f9f9f9; border-radius: 8px;">
+                        <div style="font-size: 32px; font-weight: 900; color: var(--red); margin-bottom: 10px;">700+</div>
+                        <div style="font-size: 14px; color: #666;">社媒粉丝</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 能力标签 -->
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <span style="background: var(--red); color: var(--white); padding: 10px 20px; font-size: 14px; font-weight: 600; border-radius: 20px;">内容策划</span>
+                <span style="background: var(--black); color: var(--white); padding: 10px 20px; font-size: 14px; font-weight: 600; border-radius: 20px;">文案撰写</span>
+                <span style="background: var(--red); color: var(--white); padding: 10px 20px; font-size: 14px; font-weight: 600; border-radius: 20px;">新媒体运营</span>
+                <span style="background: var(--black); color: var(--white); padding: 10px 20px; font-size: 14px; font-weight: 600; border-radius: 20px;">品牌叙事</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 案例内容保持不变 -->
+    ...
+</section>
+
+
+        <!-- 案例1：作文纸条 -->
+        <div class="case-item fade-in">
+            <div class="case-header">
+                <h3 class="case-title">📱 作文纸条APP · 哲学科普系列</h3>
+                <span class="case-tag">Content Strategy</span>
+            </div>
+            <div class="case-body">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 30px;">
+                    <div><strong style="color: var(--red);">项目时间：</strong>2024.01 - 至今</div>
+                    <div><strong style="color: var(--red);">我的角色：</strong>内容策划 / 文案撰写</div>
+                    <div><strong style="color: var(--red);">项目成果：</strong>供稿50+篇，2025年Q1优秀写手</div>
+                    <div><strong style="color: var(--red);">内容范围：</strong>中国古代文学 → 西方现代哲学</div>
+                </div>
+
+                <div class="data-grid">
+                    <div class="data-item">
+                        <div class="data-number">7000+</div>
+                        <div class="data-label">单篇浏览量</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-number">1100+</div>
+                        <div class="data-label">点赞收藏</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-number">50+</div>
+                        <div class="data-label">供稿篇数</div>
+                    </div>
+                </div>
+
+                <h4 style="margin: 30px 0 20px; font-size: 24px; font-weight: 900;">💡 核心策略</h4>
+                <ul style="padding-left: 20px; line-height: 2;">
+                    <li style="margin-bottom: 15px;"><strong>降维表达：</strong>用高中生语言讲哲学（韦伯"祛魅"、庄子"有机心"）</li>
+                    <li style="margin-bottom: 15px;"><strong>场景化：</strong>结合作文应用场景，提供可直接引用的金句</li>
+                    <li style="margin-bottom: 15px;"><strong>互动设计：</strong>"讨论室"引导UGC，提升用户参与度</li>
+                </ul>
+
+                <div style="background: var(--black); color: var(--white); padding: 40px; border-left: 8px solid var(--red); margin: 30px 0; line-height: 2;">
+                    <strong style="color: var(--red);">▶ 文案节选：《知识不在高处 | 祛魅与有机心》</strong><br><br>
+                    "在科技飞速发展的时代，我们的世界变得越来越精确、可计算、可预测。然而，在这样的环境中，我们是否也正在失去某些东西？世界变得理性而透明，但人的精神却愈发迷茫。面对技术的裹挟，我们该如何理解自身的处境？"<br><br>
+                    <em style="opacity: 0.8;">— 马克思·韦伯的"祛魅"理论为我们提供了一面镜子，让我们反思现代社会的精神困境。</em>
+                </div>
+
+                <details style="margin-top: 30px; cursor: pointer;">
+                    <summary style="font-size: 18px; font-weight: 700; padding: 15px; background: #f5f5f5; border-left: 4px solid var(--red);">
+                        📄 查看完整文案：韩炳哲《他者的消失》
+                    </summary>
+                    <div style="padding: 30px; background: #fafafa; line-height: 2;">
+                        <h4 style="font-size: 20px; margin-bottom: 20px;">韩炳哲：现代社会正在生产越来越多的自恋狂？</h4>
+                        <p style="margin-bottom: 15px;">不知道小纸条们有没有这样的感受：在这个信息爆炸的时代，我们似乎拥有了更多的选择，却越来越难以与世界建立真正的联系。</p>
+                        <p style="margin-bottom: 15px;">我们沉浸在社交媒体的点赞与评论中，享受着"被看见"的快感，同时又忍受着被忽视的焦虑。我们活在算法推荐的世界里，看到的全是自己想看的，接触的全是同温层的人，越来越难以接受异见，甚至对"他者"感到不耐烦。</p>
+                        <p><strong>韩炳哲认为，现代社会的"他者的消失"正在让我们变得越来越自恋、越来越焦虑，也越来越孤独。</strong></p>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- 案例2：山水比德 -->
+        <div class="case-item fade-in">
+            <div class="case-header">
+                <h3 class="case-title">🏞️ 山水比德公众号 · 品牌内容</h3>
+                <span class="case-tag">Brand Copywriting</span>
+            </div>
+            <div class="case-body">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 30px;">
+                    <div><strong style="color: var(--red);">项目时间：</strong>2023.06 - 2023.12</div>
+                    <div><strong style="color: var(--red);">我的角色：</strong>品牌文案撰写</div>
+                </div>
+                <p style="line-height: 2; font-size: 16px;">
+                    为景观设计公司撰写品牌推广文案，结合中国传统文化与现代设计理念，输出具有文化深度的内容。文案风格兼具专业性与可读性，成功提升品牌调性。
+                </p>
+                <div style="background: #f5f5f5; padding: 30px; margin-top: 30px; border-left: 4px solid var(--red);">
+                    <p style="line-height: 2; font-style: italic;">
+                        "景观，不再是附着于建筑肌体的末端修辞，而是自设计发端，便以系统性视角深度介入其生成机制。从布局的空间逻辑、体块的形态组织，到尺度与节奏的动态编排，与建筑共源同构，在协同中构筑出完整、内在一致的场所秩序。"
+                    </p>
+                </div>
+            </div>
+        </div>
+<!-- 案例3：小红书 -->
+<div class="case-item fade-in">
+    <div class="case-header">
+        <h3 class="case-title">📝 小红书账号运营 · 个人IP</h3>
+        <span class="case-tag">Social Media</span>
+    </div>
+    <div class="case-body">
+        <!-- 工作内容总结 -->
+        <div style="background: #f8f9fa; padding: 30px; margin-bottom: 30px; border-left: 4px solid var(--red); border-radius: 8px;">
+            <h4 style="font-size: 20px; font-weight: 900; margin-bottom: 20px; color: var(--black);">💼 工作内容</h4>
+            <ul style="padding-left: 20px; line-height: 2; color: #333;">
+                <li style="margin-bottom: 12px;"><strong>内容策划与创作：</strong>围绕文学评论、读书笔记、生活美学等主题，策划并撰写原创内容，保持每周3-5篇的更新频率</li>
+                <li style="margin-bottom: 12px;"><strong>用户运营：</strong>通过评论互动、私信回复等方式维护粉丝关系，用户留存率达85%</li>
+                <li style="margin-bottom: 12px;"><strong>数据分析：</strong>定期分析笔记数据（浏览量、点赞、收藏、转发），优化内容方向和发布时间</li>
+                <li style="margin-bottom: 12px;"><strong>热点追踪：</strong>结合时事热点创作深度评论文章，成功打造多篇爆款内容</li>
+            </ul>
+        </div>
+
+        <!-- 核心成果 -->
+        <div style="background: var(--red); color: var(--white); padding: 30px; margin-bottom: 30px; border-radius: 8px;">
+            <h4 style="font-size: 20px; font-weight: 900; margin-bottom: 20px;">🎯 核心成果</h4>
+            <ul style="padding-left: 20px; line-height: 2;">
+                <li style="margin-bottom: 12px;">累计粉丝 <strong>700+</strong>，粉丝增长率环比提升120%</li>
+                <li style="margin-bottom: 12px;">单篇最高浏览量突破 <strong>2w+</strong>，平均互动率15%</li>
+                <li style="margin-bottom: 12px;">成功打造《从自我献祭到逆天改命》等爆款内容，获得 <strong>810点赞、169收藏</strong></li>
+            </ul>
+        </div>
+
+        <!-- 数据展示 -->
+        <div class="data-grid">
+            <div class="data-item">
+                <div class="data-number">700+</div>
+                <div class="data-label">粉丝数</div>
+            </div>
+            <div class="data-item">
+                <div class="data-number">2500+</div>
+                <div class="data-label">单篇最高点赞</div>
+            </div>
+            <div class="data-item">
+                <div class="data-number">20000+</div>
+                <div class="data-label">单篇最高浏览</div>
+            </div>
+        </div>
+
+        <h4 style="margin: 40px 0 20px; font-size: 24px; font-weight: 900;">🔥 爆款笔记案例</h4>
+        
+        <!-- 爆款1：时事评论 -->
+        <div style="background: var(--white); border: 3px solid var(--black); padding: 30px; margin-bottom: 30px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h5 style="font-size: 18px; font-weight: 900;">《从自我献祭到逆天改命：哪吒神话的现代降格》</h5>
+                <span style="background: var(--red); color: var(--white); padding: 5px 15px; font-size: 12px; font-weight: 900; border-radius: 4px;">时事评论</span>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 20px; text-align: center;">
+                <div>
+                    <div style="font-size: 28px; font-weight: 900; color: var(--red);">810</div>
+                    <div style="font-size: 14px; color: #666;">点赞 👍</div>
+                </div>
+                <div>
+                    <div style="font-size: 28px; font-weight: 900; color: var(--red);">169</div>
+                    <div style="font-size: 14px; color: #666;">收藏 ⭐</div>
+                </div>
+                <div>
+                    <div style="font-size: 28px; font-weight: 900; color: var(--red);">173</div>
+                    <div style="font-size: 14px; color: #666;">评论 💬</div>
+                </div>
+            </div>
+
+            <div style="background: #f5f5f5; padding: 25px; border-left: 4px solid var(--red); line-height: 2;">
+                <p style="font-size: 15px; color: #333; margin-bottom: 15px;">
+                    <strong>核心观点：</strong>动画片《哪吒闹海》所带来的绝望感在于，无论哪吒如何神通广大、如何藐视世俗规则，在结构性的压迫面前，他依然无路可逃。
+                </p>
+                <p style="font-size: 14px; color: #666; font-style: italic;">
+                    "想要跳脱出这张无形之网，唯一的途径竟然只能是'剔骨还父、削肉还母'——以近乎宗教式的献祭和殉道，彻底割裂与整个体系的联系。在这套规训体系面前，哪吒即便拥有通天本领、即便不屑一切规则，最终仍在由观念与意识形态构筑的无形牢笼中显得无比无力，通向的也只是一个虚无的结局。"
+                </p>
+            </div>
+        </div>
+
+        <!-- 爆款2：旅行感悟 -->
+        <div style="background: var(--white); border: 3px solid var(--black); padding: 30px; margin-bottom: 30px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h5 style="font-size: 18px; font-weight: 900;">《香港是个大卖场》</h5>
+                <span style="background: var(--black); color: var(--white); padding: 5px 15px; font-size: 12px; font-weight: 900; border-radius: 4px;">旅行感悟</span>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 20px; text-align: center;">
+                <div>
+                    <div style="font-size: 28px; font-weight: 900; color: var(--red);">7000+</div>
+                    <div style="font-size: 14px; color: #666;">浏览量</div>
+                </div>
+                <div>
+                    <div style="font-size: 28px; font-weight: 900; color: var(--red);">1100+</div>
+                    <div style="font-size: 14px; color: #666;">点赞收藏</div>
+                </div>
+            </div>
+
+            <div style="background: var(--black); color: var(--white); padding: 25px; line-height: 2;">
+                <p style="font-size: 14px; opacity: 0.9;">
+                    "在过去旅游过的城市中行走，也从未有过这么强烈的身份焦虑感。行走在香港街头，听见无数种语言组成一个巨大的语音河流，意识到自己的身份是漂浮的，像婴儿般无知，无法辨认那个异质而陌生的世界。"
+                </p>
+            </div>
+        </div>
+
+        <!-- 爆款3：个人感悟 -->
+        <div style="background: var(--white); border: 3px solid var(--black); padding: 30px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h5 style="font-size: 18px; font-weight: 900;">个人感悟类爆款</h5>
+                <span style="background: var(--red); color: var(--white); padding: 5px 15px; font-size: 12px; font-weight: 900; border-radius: 4px;">情感共鸣</span>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; text-align: center;">
+                <div>
+                    <div style="font-size: 28px; font-weight: 900; color: var(--red);">2500+</div>
+                    <div style="font-size: 14px; color: #666;">点赞收藏</div>
+                </div>
+                <div>
+                    <div style="font-size: 28px; font-weight: 900; color: var(--red);">2w+</div>
+                    <div style="font-size: 14px; color: #666;">浏览量</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 运营策略 -->
+        <div style="background: #f5f5f5; padding: 30px; margin-top: 40px; border-radius: 8px;">
+            <h4 style="font-size: 20px; font-weight: 900; margin-bottom: 20px;">💡 运营策略</h4>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                <div style="padding: 20px; background: var(--white); border-left: 4px solid var(--red);">
+                    <strong style="display: block; margin-bottom: 10px; color: var(--red);">内容定位</strong>
+                    <p style="font-size: 14px; line-height: 1.8; color: #666;">深度文化评论 + 生活美学分享，打造"有思想深度的文艺青年"人设</p>
+                </div>
+                <div style="padding: 20px; background: var(--white); border-left: 4px solid var(--red);">
+                    <strong style="display: block; margin-bottom: 10px; color: var(--red);">选题策略</strong>
+                    <p style="font-size: 14px; line-height: 1.8; color: #666;">70%深度内容 + 30%热点追踪，保证内容质量的同时提升曝光</p>
+                </div>
+                <div style="padding: 20px; background: var(--white); border-left: 4px solid var(--red);">
+                    <strong style="display: block; margin-bottom: 10px; color: var(--red);">互动运营</strong>
+                    <p style="font-size: 14px; line-height: 1.8; color: #666;">24小时内回复所有评论，建立用户信任感和粘性</p>
+                </div>
+                <div style="padding: 20px; background: var(--white); border-left: 4px solid var(--red);">
+                    <strong style="display: block; margin-bottom: 10px; color: var(--red);">数据优化</strong>
+                    <p style="font-size: 14px; line-height: 1.8; color: #666;">根据后台数据调整发布时间（晚8-10点）和内容形式</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- 诗歌创作 -->
+    <section id="poetry">
+        <div class="section-header">
+            <div class="section-title-box" style="background: var(--black);">
+                <h2 class="section-title">Poetry</h2>
+            </div>
+            <div>
+                <h3 style="font-size: 48px; font-weight: 900;">诗歌创作</h3>
+                <p style="font-size: 18px; line-height: 2; margin-top: 20px; color: #666;">
+                    "人攀明月不可得，月行却与人相随。"<br>
+                    在本诗中，这句古典名句被重新唤起，作为一种顿悟：<br>
+                    爱无法真正占有，但情感与记忆会以"月光"的方式、以某种柔软的轨迹，在生活中伴随。
+                </p>
+            </div>
+        </div>
+
+        <div class="poem-card fade-in">
+            <div class="poem-title">潮湿的梦 / 2024.04</div>
+            <div class="poem-content">回南天的時刻 
+愛情的公式變成O₂+H₂O
+像與你 生活在同一個魚缸里
+
+倒掛在我身上的 
+在頸窩顫動的 你的黑髮 蒙住了眼睛 
+牽我走進一個潮濕的 夢里
+
+蒼老的人埋下時間的 未知 
+卻從我身體里生長出赤裸的 你的呼吸
+
+幼稚如我弄皺河水 
+試圖在缺氧里窒息里 捕捉你
+
+你平靜的影 看不清遠近 
+倏然懂了那句
+「人攀明月不可得 月行卻與人相隨」</div>
+        </div>
+
+        <div class="poem-card alt fade-in">
+            <div class="poem-title">魚 / 2021.03</div>
+            <div class="poem-content">我覺得 
+也許我是一條魚
+陸地上的生活太悶了
+
+這裏的事情 一件都不能讓我冒出泡泡
+我不喜歡湖水
+湖邊也不像是我該呆的地方
+
+有過被淘汰到海邊的死魚
+卻沒有聽說過坐在湖邊的魚
+
+陸地上沒有氧氣
+於是想到回到水裡的事
+確切的說 是回到海裡</div>
+        </div>
+
+        <div class="poem-card fade-in">
+            <div class="poem-title">致中文系 / 2022.11</div>
+            <div class="poem-content">文学院培养话语的复印机，
+一眼望去是语辞的海。
+
+符号堆叠成陌生化的样貌，
+索绪尔诨名唤作逻各斯。
+
+女性主义者的拳头打不进层叠的奥林匹斯山，
+存进银行的弗洛伊德与哈姆雷特在贬值，
+
+那咱们干脆取消文艺货币流通，
+让所有叙事统统都去见鬼吧，
+
+前提是要看得懂德里达，
+入场券就塞在埃克尔德街某所房子的某个缝隙里，
+
+不要害怕断裂，迷失在语义场里，
+淹没在语境中。
+
+教授说，中文人们，
+请忘记上岸这回事。</div>
+        </div>
+    </section>
+
+ <!-- 散文创作 -->
+<section id="essays" style="background: #f5f5f5;">
+    <div class="section-header">
+        <div class="section-title-box">
+            <h2 class="section-title">Essays</h2>
+        </div>
+        <div>
+            <h3 style="font-size: 48px; font-weight: 900; margin-bottom: 30px;">非虚构写作</h3>
+            
+            <!-- 新增 Summary -->
+            <div style="background: var(--white); border-left: 6px solid var(--red); padding: 30px; margin-bottom: 40px; line-height: 2;">
+                <p style="font-size: 18px; font-weight: 600; color: var(--red); margin-bottom: 15px;">✍️ 写作理念</p>
+                <p style="font-size: 16px; color: #333; margin-bottom: 20px;">
+                    散文是思想的漫游，是对生活细节的凝视，是哲学与诗意的交织。我试图在日常经验中捕捉那些被忽视的真实，用文字记录时代的温度与个体的困境。
+                </p>
+                
+                <div style="background: #f9f9f9; padding: 25px; border-radius: 8px; margin-top: 20px;">
+                    <p style="font-size: 15px; color: #666; line-height: 2; font-style: italic;">
+                        "真正的写作不是为了表达已知，而是为了探索未知。在书写的过程中，我们与自己对话，与世界和解，与时间抗争。"
+                    </p>
+                    <p style="text-align: right; margin-top: 15px; font-size: 14px; color: #999;">— 熊艺</p>
+                </div>
+            </div>
+
+            <!-- 主题标签 -->
+            <div style="margin-bottom: 30px;">
+                <p style="font-size: 14px; color: #666; margin-bottom: 15px; font-weight: 600;">📚 写作主题</p>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <span style="background: var(--white); border: 2px solid var(--red); color: var(--red); padding: 8px 18px; font-size: 13px; font-weight: 600; border-radius: 20px;">哲学思考</span>
+                    <span style="background: var(--white); border: 2px solid var(--black); color: var(--black); padding: 8px 18px; font-size: 13px; font-weight: 600; border-radius: 20px;">文化观察</span>
+                    <span style="background: var(--white); border: 2px solid var(--red); color: var(--red); padding: 8px 18px; font-size: 13px; font-weight: 600; border-radius: 20px;">旅行感悟</span>
+                    <span style="background: var(--white); border: 2px solid var(--black); color: var(--black); padding: 8px 18px; font-size: 13px; font-weight: 600; border-radius: 20px;">乡土记忆</span>
+                    <span style="background: var(--white); border: 2px solid var(--red); color: var(--red); padding: 8px 18px; font-size: 13px; font-weight: 600; border-radius: 20px;">时代批评</span>
+                </div>
+            </div>
+
+            <!-- 发表记录 -->
+            <div style="background: var(--black); color: var(--white); padding: 25px; border-radius: 8px;">
+                <p style="font-size: 14px; margin-bottom: 15px; opacity: 0.9;">
+                    <strong style="color: var(--red);">📰 发表记录：</strong>
+                    《别忘了乡村的月光》收录于中国青年网、大学生网等多个国家级网站
+                </p>
+                <p style="font-size: 13px; opacity: 0.7;">
+                    累计非虚构写作 <strong style="color: var(--red);">3w+</strong> 字 | 涉及哲学、文化、旅行等多个领域
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 散文内容保持不变 -->
+    ...
+</section>
+
+        <!-- 散文1 -->
+        <div style="background: var(--white); border: 4px solid var(--black); padding: 60px; margin-bottom: 40px;" class="fade-in">
+            <h3 style="font-size: 32px; font-weight: 900; margin-bottom: 30px; border-bottom: 4px solid var(--red); padding-bottom: 15px;">
+                真正的生活：一种没有"理念世界"作为保险的生活
+            </h3>
+            <p style="font-size: 14px; color: #999; margin-bottom: 30px;">2025.12</p>
+            
+            <div style="line-height: 2.2; font-size: 16px;">
+                <p style="margin-bottom: 25px; text-indent: 2em;">
+                    柏拉图的洞穴寓言为什么如此迷人？因为它承诺了一个elsewhere——一个别处。那些坐在洞穴里的囚徒是可悲的，因为他们不知道外面有什么。而我们读着这个寓言的人，自动地把自己想象成那个已经走出洞穴的人，或者至少是那个知道洞穴之外有世界的人。
+                </p>
+                
+                <p style="margin-bottom: 25px; text-indent: 2em;">
+                    光明对抗黑暗，真理对抗虚假，智者对抗愚民。这是一个关于启蒙的童话，它用简单的二元对立取代了生活的暧昧性。这是kitsch最狡猾的机制：它让我们相信自己站在正确的一边。
+                </p>
+
+                <p style="margin-bottom: 25px; text-indent: 2em;">
+                    我的朋友曾说，柏拉图是一个生病的希腊人。我理解他的意思。健康的人不会如此憎恨身体，不会如此迫切地想要逃离感官的世界。只有那些无法忍受生命本身的人，才会发明一个"理念世界"来贬低此时此地的存在。
+                </p>
+
+                <div style="background: var(--black); color: var(--white); padding: 40px; margin: 40px 0; border-left: 8px solid var(--red);">
+                    <p style="line-height: 2; font-style: italic;">
+                        "在布拉格的某个冬夜，一个男人和一个女人躺在床上。窗外是查理大桥的灯光，室内是两具疲惫的身体。柏拉图会说：这只是肉欲，只是洞穴里的影子游戏。真正的爱情在理念世界，在那个永恒的、纯粹的'爱'的形式之中。"
+                    </p>
+                </div>
+
+                <p style="margin-bottom: 25px; text-indent: 2em;">
+                    但这个男人抚摸着女人肩膀上的那颗痣。这颗痣是独一无二的，它不是任何"理念"的摹本。女人的呼吸声、她头发的气味、她皮肤的温度，所有这些都是无法被"理念"化约的。如果我们把这些都称作"虚假的影子"，那么真实究竟在哪里？
+                </p>
+
+                <p style="margin-bottom: 25px; text-indent: 2em;">
+                    二十世纪的哲学家们，尤其是那些法国人，终于开始质疑柏拉图的这套把戏。梅洛-庞蒂会说，是身体在思考，而不是某个脱离身体的"灵魂"。海德格尔会说，情绪不是理性的障碍，而是我们理解世界的方式。这些话听起来很深奥，但其实很简单：他们只是在说，洞穴就是我们的家。
+                </p>
+
+                <p style="margin-bottom: 25px; text-indent: 2em; font-weight: 600;">
+                    真正的智慧不在于走出洞穴，也不在于安心地留在洞穴里，而在于理解这种处境的不可能性。我们是那种注定要追问"什么是真实"的动物，同时又注定永远无法得到答案。我们的悲剧不是被困在洞穴里，而是我们知道自己被困在洞穴里。这个"知道"本身就构成了一种奇特的自由。
+                </p>
+            </div>
+        </div>
+
+        <!-- 散文2 -->
+        <div style="background: var(--white); border: 4px solid var(--black); padding: 60px; margin-bottom: 40px;" class="fade-in">
+            <h3 style="font-size: 32px; font-weight: 900; margin-bottom: 30px; border-bottom: 4px solid var(--red); padding-bottom: 15px;">
+                别忘了乡村的月光
+            </h3>
+            <p style="font-size: 14px; color: #999; margin-bottom: 10px;">2021.07</p>
+            <p style="font-size: 14px; color: #666; margin-bottom: 30px;">
+                📰 此文收录于中国青年网、大学生网等多个国家级网站
+            </p>
+            
+            <div style="line-height: 2.2; font-size: 16px;">
+                <p style="margin-bottom: 25px; text-indent: 2em;">
+                    我想，多年以后，当我站在田垄面前，准会想起那个遥远的下午。想起2021年的那个暑期，跟随着安徽师大文学院"亭城寻党"社会实践队伍来到滁州天长，在铜城龙岗遇到的那位眼里有光的芡实种植户陈阿姨。
+                </p>
+
+                <p style="margin-bottom: 25px; text-indent: 2em;">
+                    陈阿姨是个热心又健谈的农妇，谈及鸡头果，她如数家珍。她提到自己最幸福的时刻，她亮闪闪的目光向远处眺望着，却没有落在哪一处，仿佛陷入一种温情的回忆，她说："鸡头果丰收的时候是我最幸福的时候，我们龙岗的男女老少都敞开家门，在自家院里慢悠悠地清洗、剥壳。闻到果实的那股清香，我都感到充实和满足，自己的辛苦、汗水，一切都值了。"
+                </p>
+
+                <div style="background: #f9f9f9; padding: 40px; margin: 40px 0; border-left: 8px solid var(--red);">
+                    <p style="line-height: 2; font-size: 18px; font-weight: 600; color: var(--red);">
+                        "为什么我的眼中常含泪水，因为我对这土地爱得深沉。"
+                    </p>
+                    <p style="margin-top: 15px; font-size: 14px; color: #666;">
+                        — 艾青
+                    </p>
+                </div>
+
+                <p style="margin-bottom: 25px; text-indent: 2em;">
+                    阴沉沉的天空下，陈阿姨眼睛里闪烁的光彩让我误以为是好天气里太阳光的折射，后来，在我一遍遍重复回看陈阿姨的采访视频时，我突然明白，陈阿姨眼中亮晶晶的东西十分复杂——那是对龙岗这片养育一方人的土地深深的眷念与崇敬；那是对自己奉献大半生精力、时间来种植、出售芡实，一步步稳扎稳打地形成了一片小天地的成就感、满足感和获得感。
+                </p>
+
+                <p style="margin-bottom: 25px; text-indent: 2em;">
+                    突然想起家乡夜晚的天空，夏日清澈的河流，田野间随风摇动的野花，傍晚檐下的归燕，奶奶回家的呼唤。她那时总牵着我的小手，沿着弯弯的小路，对我说：<strong style="color: var(--red);">跟着月光走，就能找到回家的路。</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学术论文 -->
+    <section id="academic">
+        <div class="section-header">
+            <div class="section-title-box" style="background: var(--black);">
+                <h2 class="section-title" style="color: var(--white);">Academic</h2>
+            </div>
+            <div>
+                <h3 style="font-size: 48px; font-weight: 900;">学术研究</h3>
+                <p style="font-size: 18px; line-height: 2; margin-top: 20px; color: #666;">
+                    累计学术写作10w+字<br>
+                    研究方向：比较文学、后现代叙事<br>
+                    发表多篇学术论文与文学评论
+                </p>
+            </div>
+        </div>
+
+        <!-- 论文1 -->
+        <div class="academic-item fade-in">
+            <h3>不可言说的历史隐喻与"不确定性"的文本嬉戏<br>——从后现代语境看皮格利亚《人工呼吸》</h3>
+            <p style="font-size: 14px; color: #999; margin: 10px 0;">2024.02 | 比较文学研究</p>
+            <div style="line-height: 2; margin-top: 20px;">
+                <p style="margin-bottom: 15px;"><strong>摘要：</strong></p>
+                <p style="text-indent: 2em; margin-bottom: 15px;">
+                    阿根廷作家里卡多·皮格利亚发表于1980年的小说《人工呼吸》是一部文体混合型叙事作品，其中散文、对话、书信、传记、日记交织在一起，内容上涉及对历史、哲学、文学等诸多领域的评述。
+                </p>
+                <p style="text-indent: 2em; margin-bottom: 15px;">
+                    可以说，《人工呼吸》是一部极具"互文性"与"不确定性"的后现代戏仿、"拼贴"之作，文本之间的嬉戏就犹如一张由作家精心织就的迷宫，作家借鉴侦探小说追踪解谜的结构，将自己真正想叙述的故事层层编码，设置成谜团隐藏于小说的"可见故事"中。
+                </p>
+                <p style="text-indent: 2em; font-weight: 600;">
+                    小说真正未言明的，恰恰是它本身想要叙述——高压与黑暗的阿根廷军政府独裁统治下严肃而残忍的历史真实。
+                </p>
+            </div>
+        </div>
+
+        <!-- 论文2 -->
+        <div class="academic-item fade-in">
+            <h3>从《呼兰河传》看萧红的存在主义思考</h3>
+            <p style="font-size: 14px; color: #999; margin: 10px 0;">2021.12 | 现代文学研究</p>
+            <div style="line-height: 2; margin-top: 20px;">
+                <p style="margin-bottom: 15px;"><strong>核心观点：</strong></p>
+                <ul style="padding-left: 40px;">
+                    <li style="margin-bottom: 15px;">"瞒和骗"的"自欺"状态 — 呼兰河人集体无意识的自我欺瞒</li>
+                    <li style="margin-bottom: 15px;">西西弗斯神话 — 机械荒谬的生命轮回</li>
+                    <li style="margin-bottom: 15px;">对抗人生的荒谬 — 冯歪嘴子的生存哲学</li>
+                </ul>
+                <div style="background: #f5f5f5; padding: 30px; margin-top: 30px; border-left: 4px solid var(--red);">
+                    <p style="font-style: italic; line-height: 2;">
+                        "他们一边挂着粉，也是一边唱着的。等粉条晒干了，他们一边收着粉，也是一边地唱着。那唱不是从工作所得到的愉快，好像含着眼泪在笑似的。逆来顺受，你说我的生命可惜，我自己却不在乎。你看着很危险，我却自己以为得意。"
+                    </p>
+                    <p style="margin-top: 15px; font-size: 14px; color: #666;">— 萧红《呼兰河传》</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 论文3 -->
+        <div class="academic-item fade-in">
+            <h3>叙述区隔的越界——试谈哈姆雷特与堂吉诃德形象比较</h3>
+            <p style="font-size: 14px; color: #999; margin: 10px 0;">2023.10 | 比较文学研究</p>
+            <div style="line-height: 2; margin-top: 20px;">
+                <p style="text-indent: 2em; margin-bottom: 15px;">
+                    哈姆雷特与堂吉诃德分别是莎士比亚和塞万提斯笔下创造出的一对极其相似却各有特点的文学形象。二人都是迷信书面符号的人，都试图越过隐含读者的身份框架，整合经验世界与符号世界。
+                </p>
+                <p style="text-indent: 2em; margin-bottom: 15px;">
+                    哈姆雷特接受的是精英式的学院教育，而堂吉诃德迷恋的是大众化的通俗符号。前者接受了关于生活应然的叙事，而这种叙事在生活实然中遭遇了毁灭性的崩溃；后者则混同了虚构骑士小说叙事与经验世界。
+                </p>
+            </div>
+        </div>
+
+        <!-- 短评合集 -->
+        <div class="academic-item fade-in">
+            <h3>文学短评集</h3>
+            <p style="font-size: 14px; color: #999; margin: 10px 0;">2020-2023 | 文学批评</p>
+            <div style="line-height: 2; margin-top: 20px;">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;">
+                    <div>
+                        <h4 style="font-size: 18px; margin-bottom: 10px; color: var(--red);">▶ 评余华的暴力叙事</h4>
+                        <p style="font-size: 14px;">余华热衷于写苦难、暴力、虐待的场面。也许是由于一种恐惧，这种恐惧是出于人生而必死的现实依据的，人无法控制死亡、无法完全掌握未知的明天，因而疯狂的暴力似乎能让人尝到做神的乐趣。</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 18px; margin-bottom: 10px; color: var(--red);">▶ 评《罪与罚》</h4>
+                        <p style="font-size: 14px;">拉斯科尔尼科夫的信仰一跃实际是他的逻辑自杀。在信仰"上帝不存在"之后自杀式的谋杀行为引发的心理歉疚验证其逻辑的失误后，他痛苦地选择一条与前逻辑相悖的信仰之路。</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 18px; margin-bottom: 10px; color: var(--red);">▶ 评《悉达多》</h4>
+                        <p style="font-size: 14px;">悉达多为了追寻人生的意义，在艰难曲折的路途中恰明白所谓的"意义"在于爱具体的人，在于切实鲜活地生活，而非抽象的人、生活的形而上意义。用悉达多自己的话称："爱事物胜于爱言辞。"</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 18px; margin-bottom: 10px; color: var(--red);">▶ 评尤奈斯库的实验戏剧</h4>
+                        <p style="font-size: 14px;">尤奈斯库打破了文学真实与生活真实的界限，现代生活中的"反生活性"叙事与文本的"反文本"叙事构成一种互文——活在这个世界上就是活在尤奈斯库的戏剧舞台上。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   <!-- 教学设计 -->
+    <section id="teaching" style="background: #f5f5f5;">
+        <div class="section-header">
+            <div class="section-title-box">
+                <h2 class="section-title">Teaching</h2>
+            </div>
+            <div>
+                <h3 style="font-size: 48px; font-weight: 900;">教学设计</h3>
+                <p style="font-size: 18px; line-height: 2; margin-top: 20px; color: #666;">
+                    高中语文教学设计 | 教案 + 讲稿 + PPT<br>
+                    注重文本细读与思辨能力培养
+                </p>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px;">
+            <!-- 教案1 -->
+            <div style="background: var(--white); border: 4px solid var(--black); padding: 40px; transition: all 0.3s;" class="fade-in">
+                <div style="background: var(--red); color: var(--white); padding: 20px; margin: -40px -40px 30px -40px;">
+                    <h3 style="font-size: 24px; font-weight: 900;">《故都的秋》教案设计</h3>
+                </div>
+                <div style="line-height: 2;">
+                    <p style="margin-bottom: 15px;"><strong>教学目标：</strong></p>
+                    <ul style="padding-left: 20px; margin-bottom: 20px;">
+                        <li>学会知人论世的文艺鉴赏方法</li>
+                        <li>体会作者对故都北平的秋天深沉的眷恋之情</li>
+                        <li>激发学生在文学作品中感受生活的热情</li>
+                    </ul>
+                    <p style="margin-bottom: 15px;"><strong>教学重点：</strong></p>
+                    <p style="padding-left: 20px; margin-bottom: 20px;">掌握"知人论世"的文艺鉴赏方法，借助已学过的知识加深对现学知识的理解。</p>
+                    <div style="background: #f5f5f5; padding: 20px; border-left: 4px solid var(--red);">
+                        <p style="font-size: 14px; font-style: italic;">
+                            "文题可否换成'北平的秋'？要弄懂这个问题，我们得明确'故都'一词的特殊韵味。'故'有'从前的'、'过去的'的意思，人们对'从前的'、'过去的'的事物往往会产生怀念、眷恋等感情。"
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 教案2 -->
+            <div style="background: var(--white); border: 4px solid var(--black); padding: 40px; transition: all 0.3s;" class="fade-in">
+                <div style="background: var(--black); color: var(--white); padding: 20px; margin: -40px -40px 30px -40px;">
+                    <h3 style="font-size: 24px; font-weight: 900;">《装在套子里的人》教学设计</h3>
+                </div>
+                <div style="line-height: 2;">
+                    <p style="margin-bottom: 15px;"><strong>教学目标：</strong></p>
+                    <ul style="padding-left: 20px; margin-bottom: 20px;">
+                        <li>把握别里科夫的人物形象</li>
+                        <li>理解人物形象的现实意义</li>
+                        <li>分析典型人物的典型语言</li>
+                    </ul>
+                    <p style="margin-bottom: 15px;"><strong>核心问题：</strong></p>
+                    <div style="background: var(--red); color: var(--white); padding: 20px; margin: 20px 0;">
+                        <p style="font-size: 18px; font-weight: 600; text-align: center;">
+                            "千万别闹出什么乱子"
+                        </p>
+                        <p style="font-size: 14px; text-align: center; margin-top: 10px; opacity: 0.9;">
+                            — 这句话在文中出现了四次，每次的语气和含义有何不同？
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 讲稿1 -->
+            <div style="background: var(--white); border: 4px solid var(--black); padding: 40px; transition: all 0.3s;" class="fade-in">
+                <div style="background: var(--red); color: var(--white); padding: 20px; margin: -40px -40px 30px -40px;">
+                    <h3 style="font-size: 24px; font-weight: 900;">讲稿：我们都是哈姆雷特</h3>
+                </div>
+                <div style="line-height: 2;">
+                    <p style="margin-bottom: 15px; font-weight: 600;">核心观点：</p>
+                    <p style="text-indent: 2em; margin-bottom: 15px;">
+                        哈姆雷特的延宕不是性格缺陷，而是人类面对复杂现实时的普遍困境。
+                    </p>
+                    <div style="background: #f5f5f5; padding: 20px; margin: 20px 0;">
+                        <p style="font-size: 14px; margin-bottom: 10px;"><strong>延宕的三重原因：</strong></p>
+                        <ul style="padding-left: 20px; font-size: 14px;">
+                            <li>真相未知（剧情角度）</li>
+                            <li>性格冲突（人物角度）</li>
+                            <li>孤独无援（环境角度）</li>
+                        </ul>
+                    </div>
+                    <p style="font-style: italic; color: #666; font-size: 14px;">
+                        "哈姆雷特就像一面镜子，映出了我们自己的样子。我们为哈姆雷特感到惋惜，在认知理论里，我们其实在为自己感到惋惜。"
+                    </p>
+                </div>
+            </div>
+
+            <!-- 讲稿2 -->
+            <div style="background: var(--white); border: 4px solid var(--black); padding: 40px; transition: all 0.3s;" class="fade-in">
+                <div style="background: var(--black); color: var(--white); padding: 20px; margin: -40px -40px 30px -40px;">
+                    <h3 style="font-size: 24px; font-weight: 900;">讲稿：人有悲欢离合——悲剧与喜剧</h3>
+                </div>
+                <div style="line-height: 2;">
+                    <p style="margin-bottom: 15px; font-weight: 600;">三层认知递进：</p>
+                    <div style="background: #f5f5f5; padding: 20px; margin: 20px 0; border-left: 4px solid var(--red);">
+                        <p style="font-size: 14px; margin-bottom: 10px;"><strong>1. 普通认知：</strong></p>
+                        <p style="font-size: 14px; padding-left: 20px;">喜剧让人笑，悲剧让人哭</p>
+                        
+                        <p style="font-size: 14px; margin: 15px 0 10px 0;"><strong>2. 进阶认知：</strong></p>
+                        <p style="font-size: 14px; padding-left: 20px;">悲剧是将人生有价值的东西毁灭给人看，喜剧是将人生无价值的撕破给人看（鲁迅）</p>
+                        
+                        <p style="font-size: 14px; margin: 15px 0 10px 0;"><strong>3. 高阶认知：</strong></p>
+                        <p style="font-size: 14px; padding-left: 20px;">真正的喜剧是以悲剧为内核的</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h2>LET'S<br>CONNECT</h2>
+                <p style="font-size: 18px; line-height: 2; margin-top: 30px; opacity: 0.8;">
+                    如果你对我的作品感兴趣<br>
+                    或想要进行合作交流<br>
+                    欢迎通过以下方式联系我
+                </p>
+            </div>
+            <div>
+                <div class="contact-item">
+                    <strong>📧 EMAIL</strong>
+                    <a href="mailto:1171933079@qq.com">1171933079@qq.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>📱 PHONE</strong>
+                    <a href="tel:13329103960">133 2910 3960</a>
+                </div>
+                <div class="contact-item">
+                    <strong>🎓 EDUCATION</strong>
+                    <p>暨南大学 · 比较文学与世界文学 · 硕士在读</p>
+                    <p>安徽师范大学 · 汉语言文学 · 学士</p>
+                </div>
+                <div class="contact-item">
+                    <strong>💼 SKILLS</strong>
+                    <p>内容策划 | 文案撰写 | 学术研究 | 新媒体运营</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 80px; padding-top: 40px; border-top: 1px solid #333;">
+            <p style="font-size: 14px; opacity: 0.6;">
+                © 2026 XIONG YI PORTFOLIO | Designed with ❤️
+            </p>
+            <p style="font-size: 12px; opacity: 0.4; margin-top: 10px;">
+                "人攀明月不可得，月行却与人相随"
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript 交互效果 -->
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 滚动动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 导航栏滚动效果
+        let lastScroll = 0;
+        const nav = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // 鼠标跟随效果（可选）
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            // 可以添加一些鼠标跟随的视觉效果
+        });
+
+        // 打字机效果（Hero标题）
+        const heroTitle = document.querySelector('.hero h1');
+        if (heroTitle) {
+            const text = heroTitle.textContent;
+            heroTitle.textContent = '';
+            let i = 0;
+            
+            const typeWriter = () => {
+                if (i < text.length) {
+                    heroTitle.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 150);
+                }
+            };
+            
+            setTimeout(typeWriter, 500);
+        }
+
+        // 卡片悬停效果增强
+        document.querySelectorAll('.about-card, .case-item, .academic-item').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // 数据动画
+        const animateNumbers = () => {
+            document.querySelectorAll('.data-number').forEach(num => {
+                const target = parseInt(num.textContent);
+                let current = 0;
+                const increment = target / 50;
+                
+                const updateNumber = () => {
+                    if (current < target) {
+                        current += increment;
+                        num.textContent = Math.floor(current) + '+';
+                        requestAnimationFrame(updateNumber);
+                    } else {
+                        num.textContent = target + '+';
+                    }
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateNumber();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+                
+                observer.observe(num);
+            });
+        };
+
+        animateNumbers();
+
+        // 控制台彩蛋
+        console.log('%c欢迎来到我的作品集！', 'color: #E60012; font-size: 24px; font-weight: bold;');
+        console.log('%c如果你对我的作品感兴趣，欢迎联系我：1171933079@qq.com', 'color: #000; font-size: 14px;');
+        console.log('%c"人攀明月不可得，月行却与人相随"', 'color: #666; font-size: 12px; font-style: italic;');
+    </script>
+
+</body>
+</html>
