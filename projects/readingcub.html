@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阅读兽 ReadingCub | 熊艺作品集</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+        <span class="lb-close">x</span>
+        <img id="lightbox-img" src="" alt="查看大图">
+    </div>
+
+    <!-- Nav -->
+    <nav>
+        <a href="../index.html" class="logo">熊艺</a>
+        <ul>
+            <li><a href="../index.html#home">Home</a></li>
+            <li><a href="../index.html#biography">Biography</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#papers">Papers</a></li>
+            <li><a href="../index.html#works">Works</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-section active" id="readingcub-detail" style="display:block; padding-top:100px;">
+        <a href="../index.html#projects" class="back-link" style="margin-left:6%;">返回项目列表</a>
+        <div style="padding:0 6%;">
+            <div class="section-header"><h2>阅读兽 ReadingCub</h2></div>
+
+            <div class="detail-intro">
+                <p>阅读兽 ReadingCub 是一个大型通识阅读内容产品。核心设计理念：不仅告诉读者「读什么」，更帮读者建立「怎么想」的认知框架。每个主题包含25本书的深度书摘 + 26个关键词的百科级解读。我主导了多主题从知识框架搭建、书稿撰写、学术核校到成稿交付的全链路工作，并开发了支撑该生产流程的AI工具链。</p>
+            </div>
+
+            <!-- 内容架构 -->
+            <div class="detail-section">
+                <h3>内容架构：选书 x 关键词双线结构</h3>
+                <div class="dual-track">
+                    <div class="track-card">
+                        <div class="track-title">选书线</div>
+                        <div class="track-question">「在这个主题下，应该读什么？」</div>
+                        <div class="track-desc">25本书按知识层级组织为5-8个二级模块，每本书产出2500-4000字的深度书摘（含书目概述、5个核心要点、作者简介）。选书标准：一本书在结构位置上必须是不可替代的——它要回答一个其他书没有覆盖的独特问题。</div>
+                    </div>
+                    <div class="track-card">
+                        <div class="track-title">关键词线</div>
+                        <div class="track-question">「在这个主题下，应该怎么想？」</div>
+                        <div class="track-desc">26个关键词归入3-6个底层问题，每个关键词可独立展开为800-1500字的科普文章。设计原则：认知层级清晰、可被多本书支撑、可独立成文、有迁移价值。</div>
+                    </div>
+                </div>
+                <p>选书解决「知识输入的结构化」问题，关键词解决「认知输出的框架化」问题。二者互补，构成一个完整的内容产品闭环。每主题联络50+位国际学者进行学术审核。</p>
+            </div>
+
+            <!-- 主题展示 + EPUB链接 -->
+            <div class="detail-section">
+                <h3>参与开发的主题</h3>
+                <p>点击下载PDF离线阅读。</p>
+                <div class="theme-showcase">
+                    <div class="theme-card">
+                        <img src="../assets/images/book_cover_humanoid.jpg" alt="人形机器人" loading="lazy">
+                        <div class="theme-info">
+                            <div class="theme-name">人形机器人</div>
+                            <div class="theme-meta">主题34 | 25本书 + 26关键词 | 8位监修学者</div>
+                            <div class="file-links">
+                                <a href="../files/阅读兽EPUB/PDF/Theme.34 人形机器人 - 阅读兽ReadingCub.pdf" class="file-link" target="_blank" download>下载PDF <span class="ext">PDF</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-card">
+                        <img src="../assets/images/book_cover_ai_history.png" alt="人工智能编年史" loading="lazy">
+                        <div class="theme-info">
+                            <div class="theme-name">人工智能编年史</div>
+                            <div class="theme-meta">全流程开发 | 概念史长文 + 书摘 + 关键词</div>
+                            <div class="file-links">
+                                <a href="../files/阅读兽EPUB/PDF/人工智能编年史 - 阅读兽 ReadingCub.pdf" class="file-link" target="_blank" download>下载PDF <span class="ext">PDF</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-card">
+                        <img src="../assets/images/book_cover_motion.png" alt="运动的奥义" loading="lazy">
+                        <div class="theme-info">
+                            <div class="theme-name">运动的奥义</div>
+                            <div class="theme-meta">主题25 | 全流程开发</div>
+                            <div class="file-links">
+                                <a href="../files/阅读兽EPUB/PDF/运动的奥义 - 阅读兽 ReadingCub.pdf" class="file-link" target="_blank" download>下载PDF <span class="ext">PDF</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="theme-card">
+                        <img src="../assets/images/book_cover_psychology.png" alt="心理学超入门" loading="lazy">
+                        <div class="theme-info">
+                            <div class="theme-name">心理学超入门</div>
+                            <div class="theme-meta">主题32 | 内容开发</div>
+                            <div class="file-links">
+                                <a href="../files/阅读兽EPUB/PDF/Theme.32 心理学超入门 - 阅读兽ReadingCub.pdf" class="file-link" target="_blank" download>下载PDF <span class="ext">PDF</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 国际学术资源网络 -->
+            <div class="detail-section">
+                <h3>国际学术资源网络</h3>
+                <p>在「人形机器人」主题中，独立搜索并联络了50+位国际学者，最终8位同意署名监修，覆盖机器人学、AI伦理、控制论、科技史等领域：</p>
+                <table class="scholar-table">
+                    <tr><th>学者</th><th>研究方向</th><th>单位</th><th>匹配模块</th></tr>
+                    <tr><td>Andrew Pickering</td><td>控制论史、科技与社会</td><td>University of Exeter (荣休)</td><td>控制论与人机关系</td></tr>
+                    <tr><td>Ezequiel A. Di Paolo</td><td>具身认知、参与式意义构建</td><td>Ikerbasque / 巴斯克大学</td><td>具身智能</td></tr>
+                    <tr><td>Tom Ziemke</td><td>具身认知、认知系统工程</td><td>Linkoping University</td><td>具身智能</td></tr>
+                    <tr><td>Xiang Li (李响)</td><td>机器人触觉感知、人机交互</td><td>University of Cambridge</td><td>触觉感知</td></tr>
+                    <tr><td>Hongbin Liu (刘宏斌)</td><td>医疗机器人、柔性传感</td><td>King's College London</td><td>机器人感知</td></tr>
+                    <tr><td>Mason Xie</td><td>AI伦理、科技政策</td><td>University of Oxford</td><td>AI伦理与治理</td></tr>
+                    <tr><td>Nadia Thalmann</td><td>虚拟人、社交机器人</td><td>University of Geneva</td><td>社交机器人理论</td></tr>
+                    <tr><td>Daniel Thalmann</td><td>计算机图形学、虚拟人动画</td><td>EPFL (荣休)</td><td>机器人视觉与交互</td></tr>
+                </table>
+                <div class="efficiency-badge">效率：2周内完成50+学者搜索与联络，最终8位署名监修</div>
+            </div>
+
+            <!-- AI工具链 -->
+            <div class="detail-section">
+                <h3>AI工具链开发</h3>
+                <p>为支撑阅读兽的高强度内容生产流程，自主研发了一系列AI工具：</p>
+                <div class="toolchain-grid">
+                    <div class="toolchain-item">
+                        <div class="tool-name">book2txt</div>
+                        <div class="tool-desc">多格式转TXT（PDF/DOCX/EPUB），自动识别扫描版PDF并启动OCR</div>
+                    </div>
+                    <div class="toolchain-item">
+                        <div class="tool-name">book-summary</div>
+                        <div class="tool-desc">完整摘要工作流：索引表 + 中/英文书稿 + 学术润色 + 术语审查</div>
+                    </div>
+                    <div class="toolchain-item">
+                        <div class="tool-name">book-curation</div>
+                        <div class="tool-desc">主题选书全流程：模块结构 -> 理论路径 -> 书目池 -> Excel交付</div>
+                    </div>
+                    <div class="toolchain-item">
+                        <div class="tool-name">guizang-ppt-skill</div>
+                        <div class="tool-desc">杂志风网页PPT生成，横向翻页，电子墨水风格</div>
+                    </div>
+                    <div class="toolchain-item">
+                        <div class="tool-name">docx generation</div>
+                        <div class="tool-desc">自动化DOCX输出，页面设置/字体/行距精确控制</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 宣传物料 -->
+            <div class="detail-section">
+                <h3>宣传物料</h3>
+                <div class="media-grid" style="grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));">
+                    <img src="../assets/images/readingcub_2.jpg" alt="阅读兽主题概览" onclick="openLightbox(this.src)" loading="lazy">
+                    <img src="../assets/images/readingcub_detail1.jpg" alt="阅读兽产品详情" onclick="openLightbox(this.src)" loading="lazy">
+                    <div class="media-video">
+                        <video controls preload="metadata">
+                            <source src="../assets/videos/readingcub_promo.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-label">阅读兽宣传视频</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer" style="padding-bottom:40px;">Copyright 2026 XIONG YI PORTFOLIO</div>
+    </div>
+
+    <script>
+        // Lightbox
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        // Nav scroll effect
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.pageYOffset > 60));
+    </script>
+</body>
+</html>

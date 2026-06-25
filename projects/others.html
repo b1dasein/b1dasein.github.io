@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>其他项目 | 熊艺作品集</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+        <span class="lb-close">x</span>
+        <img id="lightbox-img" src="" alt="查看大图">
+    </div>
+
+    <nav>
+        <a href="../index.html" class="logo">熊艺</a>
+        <ul>
+            <li><a href="../index.html#home">Home</a></li>
+            <li><a href="../index.html#biography">Biography</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#papers">Papers</a></li>
+            <li><a href="../index.html#works">Works</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-section active" id="other-projects" style="display:block; padding-top:100px;">
+        <a href="../index.html#projects" class="back-link" style="margin-left:6%;">返回项目列表</a>
+        <div style="padding:0 6%;">
+            <div class="section-header"><h2>其他项目</h2></div>
+            <div style="max-width:900px; display:grid; gap:30px;">
+                <div style="border:1px solid #e0e0e0; border-radius:10px; padding:24px;">
+                    <h3 style="font-size:18px; font-weight:600; margin-bottom:10px; color:#222222;">具身智能序厅策展方案</h3>
+                    <p style="font-size:14px; color:#777777; margin-bottom:14px;">为凡拓数创策划的具身智能主题展览方案，涵盖策展思路、展陈设计、互动体验等。</p>
+                    <div class="file-links">
+                        <a href="../files/项目文案/具身智能序展/具身智能序厅策展方案_完整版.pdf" class="file-link" target="_blank">策展方案PDF <span class="ext">PDF</span></a>
+                        <a href="../files/项目文案/具身智能序展/具身智能序厅汇报.pdf" class="file-link" target="_blank">汇报PPT <span class="ext">PDF</span></a>
+                        <a href="../files/项目文案/具身智能序展/具身智能_AI工作流完整复现.html" class="file-link" target="_blank">AI工作流演示 <span class="ext">HTML</span></a>
+                        <a href="../files/项目文案/具身智能序展/ai视频.mp4" class="file-link" target="_blank">AI视频展示 <span class="ext">MP4</span></a>
+                    </div>
+                </div>
+                <div style="border:1px solid #e0e0e0; border-radius:10px; padding:24px;">
+                    <h3 style="font-size:18px; font-weight:600; margin-bottom:10px; color:#222222;">BIGGER艺术书展公众号</h3>
+                    <p style="font-size:14px; color:#777777; margin-bottom:14px;">为BIGGER艺术书展策划并撰写的品牌公众号推文，推广艺术书展活动内容与参展品牌。</p>
+                    <div class="file-links">
+                        <a href="../files/项目文案/bigger艺术书展.html" class="file-link" target="_blank">查看推文 <span class="ext">HTML</span></a>
+                    </div>
+                </div>
+                <div style="border:1px solid #e0e0e0; border-radius:10px; padding:24px;">
+                    <h3 style="font-size:18px; font-weight:600; margin-bottom:10px; color:#222222;">lokadhatu 公众号方案</h3>
+                    <p style="font-size:14px; color:#777777; margin-bottom:14px;">为lokadhatu公众号策划的内容定位与推文构想方案，涵盖账号定位、内容架构、选题方向等。</p>
+                    <div class="file-links">
+                        <a href="../files/项目文案/lokadhatu香薰品牌/lokadhatu方案.html" class="file-link" target="_blank">在线阅读 <span class="ext">HTML</span></a>
+                    </div>
+                </div>
+                <div style="border:1px solid #e0e0e0; border-radius:10px; padding:24px;">
+                    <h3 style="font-size:18px; font-weight:600; margin-bottom:10px; color:#222222;">机器人前瞻 / 智东西 科技编译</h3>
+                    <p style="font-size:14px; color:#777777; margin-bottom:14px;">为机器人前瞻、智东西等科技媒体编译英文科技文献，内容涵盖机器人技术、AI前沿等领域。以下为编译稿件样例。</p>
+                    <div class="file-links">
+                        <a href="../files/项目文案/智东西时事稿/智东西公众号时事稿.pdf" class="file-link" target="_blank" download>编译稿件样例 <span class="ext">PDF</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer" style="padding-bottom:40px;">Copyright 2026 XIONG YI PORTFOLIO</div>
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.pageYOffset > 60));
+    </script>
+</body>
+</html>

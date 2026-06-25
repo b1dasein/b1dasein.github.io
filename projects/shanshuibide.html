@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山水比德 | 熊艺作品集</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+        <span class="lb-close">x</span>
+        <img id="lightbox-img" src="" alt="查看大图">
+    </div>
+
+    <!-- Nav -->
+    <nav>
+        <a href="../index.html" class="logo">熊艺</a>
+        <ul>
+            <li><a href="../index.html#home">Home</a></li>
+            <li><a href="../index.html#biography">Biography</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#papers">Papers</a></li>
+            <li><a href="../index.html#works">Works</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-section active" id="shanshuibide-detail" style="display:block; padding-top:100px;">
+        <a href="../index.html#projects" class="back-link" style="margin-left:6%;">返回项目列表</a>
+        <div style="padding:0 6%;">
+            <div class="section-header"><h2>山水比德</h2></div>
+            <div class="detail-intro">
+                <p>山水比德是一家景观设计头部企业（股票代码：300844）。作为品牌文案策划，负责微信公众号运营与内容策划，同时管理两个账号的差异化运营。</p>
+                <p style="font-size:13px; color:#777777; margin-top:8px;">以下推文均本人撰稿、秀米排版，平面部分与设计部门协商视觉落地。</p>
+            </div>
+
+            <!-- 账号说明 -->
+            <div class="dual-track" style="margin:20px 0 30px;">
+                <div class="track-card">
+                    <div class="track-title">山水比德（主账号）</div>
+                    <div class="track-desc">景观设计头部企业品牌官方公众号，发布精品项目深度解读、品牌新闻、公司动态与企业文化内容。撰写具有人文厚度的项目叙事，将设计理念转化为可传播的品牌故事。</div>
+                </div>
+                <div class="track-card">
+                    <div class="track-title">区域房市观察（从0到1孵化）</div>
+                    <div class="track-desc">独立孵化的行业观察号，聚焦三四线房地产市场趋势与项目深度分析。从账号定位、内容策划到选题执行全链路负责，产出兼具行业洞察与可读性的市场分析内容。</div>
+                </div>
+            </div>
+
+            <!-- 视觉素材 -->
+            <div class="detail-section">
+                <h3>推文视觉</h3>
+                <div class="work-visual-grid" style="grid-template-columns:repeat(3, 1fr);">
+                    <img src="../assets/images/0.png" alt="推文截图" onclick="openLightbox(this.src)" loading="lazy" style="grid-row:span 2;">
+                    <img src="../assets/images/1.png" alt="推文截图" onclick="openLightbox(this.src)" loading="lazy" style="grid-row:span 2;">
+                    <img src="../assets/images/2.png" alt="推文截图" onclick="openLightbox(this.src)" loading="lazy">
+                    <img src="../assets/images/3.png" alt="推文截图" onclick="openLightbox(this.src)" loading="lazy">
+                    <img src="../assets/images/4.png" alt="推文截图" onclick="openLightbox(this.src)" loading="lazy" style="grid-row:span 2;">
+                    <img src="../assets/images/5.png" alt="推文截图" onclick="openLightbox(this.src)" loading="lazy">
+                    <img src="../assets/images/6.png" alt="推文截图" onclick="openLightbox(this.src)" loading="lazy" style="grid-column:span 2;">
+                </div>
+            </div>
+
+            <!-- 账号一：山水比德（主账号） -->
+            <div class="detail-section">
+                <h3>山水比德 · 项目案例</h3>
+                <div class="article-list">
+                    <div class="article-category"><span class="cat-label">PROJECT STORIES</span></div>
+                    <a href="https://mp.weixin.qq.com/s/xHbPzre_0sM4kJ-oRDXiIA" class="article-item" target="_blank" rel="noopener">
+                        <span class="article-icon">案</span>
+                        <div class="article-text">
+                            <div class="article-title">福清茂华星河颂二期：当建筑隐入山水，生活长出诗意</div>
+                            <div class="article-meta">深圳设计院发布</div>
+                        </div>
+                        <span class="article-arrow">→</span>
+                    </a>
+                    <a href="https://mp.weixin.qq.com/s/GoydTO6SsRY1ffPNobrE4g" class="article-item" target="_blank" rel="noopener">
+                        <span class="article-icon">案</span>
+                        <div class="article-text">
+                            <div class="article-title">静谧的几何 | 胶州宝佳·雲湖甲第</div>
+                            <div class="article-meta">项目解读</div>
+                        </div>
+                        <span class="article-arrow">→</span>
+                    </a>
+                    <a href="https://mp.weixin.qq.com/s/wSursIOrAtQo4raDX7Ne2g" class="article-item" target="_blank" rel="noopener">
+                        <span class="article-icon">案</span>
+                        <div class="article-text">
+                            <div class="article-title">诗意存在的缓慢回响 | 重庆中铁建·西派城三期</div>
+                            <div class="article-meta">项目解读</div>
+                        </div>
+                        <span class="article-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h3>山水比德 · 品牌新闻</h3>
+                <div class="article-list">
+                    <div class="article-category"><span class="cat-label">BRAND NEWS</span></div>
+                    <a href="https://mp.weixin.qq.com/s/PUySU_nWuWdQKqaVNcVldA" class="article-item" target="_blank" rel="noopener">
+                        <span class="article-icon">闻</span>
+                        <div class="article-text">
+                            <div class="article-title">山水比德建筑模型入驻广州建筑模型博物馆，亮相2025建设科技活动周</div>
+                            <div class="article-meta">品牌新闻</div>
+                        </div>
+                        <span class="article-arrow">→</span>
+                    </a>
+                    <a href="https://mp.weixin.qq.com/s/k_jLxgnEuXJzL7oIuSDsCg" class="article-item" target="_blank" rel="noopener">
+                        <span class="article-icon">闻</span>
+                        <div class="article-text">
+                            <div class="article-title">山水比德受邀参加「工程建设行业AI创新应用」技术交流会</div>
+                            <div class="article-meta">品牌新闻</div>
+                        </div>
+                        <span class="article-arrow">→</span>
+                    </a>
+                    <a href="https://mp.weixin.qq.com/s/7RB3L8rPY9Z0g3C_dTZxWg" class="article-item" target="_blank" rel="noopener">
+                        <span class="article-icon">闻</span>
+                        <div class="article-text">
+                            <div class="article-title">深化AI+AR布局，山水比德与灵伴科技共创智慧未来</div>
+                            <div class="article-meta">品牌新闻</div>
+                        </div>
+                        <span class="article-arrow">→</span>
+                    </a>
+                    <a href="https://mp.weixin.qq.com/s/Xz3ihGWscfa1ezfRtASPEg" class="article-item" target="_blank" rel="noopener">
+                        <span class="article-icon">闻</span>
+                        <div class="article-text">
+                            <div class="article-title">从应届到专业，比德生6.0这样打开</div>
+                            <div class="article-meta">企业文化</div>
+                        </div>
+                        <span class="article-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 山水比德 公司月报 -->
+            <div class="detail-section">
+                <h3>山水比德 · 专题策划</h3>
+                <div class="article-list">
+                    <div class="article-category"><span class="cat-label">MONTHLY REPORT</span></div>
+                    <a href="https://mp.weixin.qq.com/s/oZ4dI4RrP4gxEQaA5_p_ug" class="article-item" target="_blank" rel="noopener">
+                        <span class="article-icon">报</span>
+                        <div class="article-text">
+                            <div class="article-title">S.P.I Monthly Reports 比德大眼睛</div>
+                            <div class="article-meta">公司月报</div>
+                        </div>
+                        <span class="article-arrow">→</span>
+                    </a>
+                    <a href="https://mp.weixin.qq.com/s/3pEZlMg39eBpkSBdgrtzvw" class="article-item" target="_blank" rel="noopener">
+                        <span class="article-icon">报</span>
+                        <div class="article-text">
+                            <div class="article-title">S.P.I Monthly Reports 比德大眼睛</div>
+                            <div class="article-meta">公司月报</div>
+                        </div>
+                        <span class="article-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 账号二：区域房市观察 -->
+            <div class="detail-section">
+                <h3>区域房市观察 · 市场分析</h3>
+                <div class="article-list">
+                    <div class="article-category"><span class="cat-label">MARKET INSIGHT</span></div>
+                    <a href="https://mp.weixin.qq.com/s/bi7IF-CyoQraMbEm5T0ORw" class="article-item" target="_blank" rel="noopener">
+                        <span class="article-icon">市</span>
+                        <div class="article-text">
+                            <div class="article-title">三四线楼市，找到出路的2大关键解法！</div>
+                            <div class="article-meta">区域房市观察</div>
+                        </div>
+                        <span class="article-arrow">→</span>
+                    </a>
+                    <a href="https://mp.weixin.qq.com/s/nBDu--PbxNnCbomd7w897g" class="article-item" target="_blank" rel="noopener">
+                        <span class="article-icon">市</span>
+                        <div class="article-text">
+                            <div class="article-title">谁说三线城市做不了高品质宋式美学项目？</div>
+                            <div class="article-meta">区域房市观察</div>
+                        </div>
+                        <span class="article-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer" style="padding-bottom:40px;">Copyright 2026 XIONG YI PORTFOLIO</div>
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.pageYOffset > 60));
+    </script>
+</body>
+</html>

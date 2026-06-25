@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>lokadhatu公众号推文构想方案 | 熊艺作品集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Noto Sans SC', -apple-system, 'PingFang SC', sans-serif;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 32px 100px;
+    color: #2c2c2c;
+    background: #fcfcf9;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+.back-link {
+    display: inline-block;
+    margin-bottom: 40px;
+    color: #bbb;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.back-link:hover { color: #666; }
+
+/* Header */
+.project-header {
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e8e4dd;
+}
+.project-header .category {
+    font-size: 11px;
+    color: #bbb;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.project-header h1 {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #1a1a1a;
+    letter-spacing: -0.3px;
+}
+
+/* Section styling */
+.section {
+    margin-bottom: 48px;
+}
+.section-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #bbb;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Product card */
+.product-intro {
+    background: #f5f3ee;
+    padding: 32px;
+    border-radius: 2px;
+    margin-bottom: 40px;
+}
+.product-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+}
+.product-subtitle {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+.product-tag {
+    display: inline-block;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 2px 10px;
+    margin-top: 8px;
+}
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 16px;
+}
+.info-label {
+    font-size: 11px;
+    color: #bbb;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.info-value {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Body text */
+.body-text {
+    font-size: 15px;
+    line-height: 2;
+    color: #444;
+    margin-bottom: 32px;
+}
+.body-text p {
+    margin-bottom: 20px;
+    text-indent: 2em;
+}
+.body-text p.no-indent {
+    text-indent: 0;
+}
+.body-text .section-number {
+    font-size: 32px;
+    font-weight: 200;
+    color: #ddd;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -2px;
+    display: block;
+    margin-bottom: 8px;
+    text-indent: 0;
+}
+
+/* Quote styling */
+.poetry-quote {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    color: #666;
+    line-height: 2.2;
+    padding: 24px 0;
+    margin: 24px 0;
+    text-align: center;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    text-indent: 0;
+}
+.poetry-quote .source {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    color: #bbb;
+    margin-top: 8px;
+}
+
+/* Images */
+.image-block {
+    margin: 32px 0;
+    text-align: center;
+}
+.image-block img {
+    max-width: 100%;
+    border-radius: 2px;
+    cursor: zoom-in;
+}
+.image-block .caption {
+    font-size: 11px;
+    color: #bbb;
+    letter-spacing: 1px;
+    margin-top: 8px;
+}
+.image-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 32px 0;
+}
+.image-row img {
+    width: 100%;
+    border-radius: 2px;
+    cursor: zoom-in;
+}
+
+/* Product card in article */
+.product-card {
+    background: #f5f3ee;
+    padding: 28px;
+    margin: 24px 0;
+    border-radius: 2px;
+}
+.product-card h3 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 16px;
+}
+.product-card .card-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.product-card .detail-row {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    padding: 6px 0;
+    border-bottom: 1px solid #e8e4dd;
+}
+.product-card .detail-label {
+    color: #999;
+    min-width: 60px;
+    flex-shrink: 0;
+}
+.product-card .detail-value {
+    color: #555;
+}
+
+/* End interaction */
+.interaction-box {
+    margin-top: 48px;
+    padding: 24px;
+    background: #f5f3ee;
+    text-align: center;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #666;
+    line-height: 2;
+}
+.interaction-box .brand {
+    font-size: 18px;
+    font-family: 'Noto Serif SC', serif;
+    color: #1a1a1a;
+    margin-top: 16px;
+}
+.interaction-box .brand-sub {
+    font-size: 12px;
+    color: #bbb;
+    letter-spacing: 1px;
+}
+
+/* Lightbox */
+.lightbox-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+.lb-close {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    z-index: 10000;
+}
+
+@media (max-width: 600px) {
+    body { padding: 32px 20px 80px; }
+    .info-grid { grid-template-columns: 1fr; }
+    .image-row { grid-template-columns: 1fr; }
+    .product-intro { padding: 24px; }
+}
+</style>
+</head>
+<body>
+<a href="../../../projects/others.html" class="back-link">← 返回其他项目</a>
+
+<div class="project-header">
+<div class="category">公众号推文构想方案</div>
+<h1>lokadhatu · 别院寻梅</h1>
+</div>
+
+<!-- 产品信息 -->
+<div class="section">
+<div class="section-title">产品信息及文案定调</div>
+<div class="product-intro">
+    <div class="product-name">YUAN · 别院寻梅</div>
+    <div class="product-subtitle">花香调 · 护手霜</div>
+    <div class="poetry-quote" style="border:none; padding:0 0 16px; margin:0 0 16px; text-align:left; font-size:14px;">
+        梅花并满院 / 香自古寒<br>
+        院内是出世 / 半是清欢 / 半是烟火
+    </div>
+    <div style="font-size:13px; color:#888; line-height:1.8;">
+        <div><span class="info-label">前调</span> 梨 · 罗勒 · 马鞭草</div>
+        <div><span class="info-label">中调</span> 茉莉 · 莲花 · 梅花</div>
+        <div><span class="info-label">后调</span> 香根草 · 没药</div>
+    </div>
+    <div class="product-tag">禅意 · 克制 · 半文半白</div>
+</div>
+<div class="info-grid">
+    <div>
+        <div class="info-label">品牌文案风格</div>
+        <div class="info-value">五字、七字短句 · 禅意克制 · 半文半白 · 有呼吸感的排版</div>
+    </div>
+    <div>
+        <div class="info-label">包装设计</div>
+        <div class="info-value">极简质朴 · 草香纸彩盒 · 弘一法师字体 · 一体式铝管</div>
+    </div>
+    <div>
+        <div class="info-label">核心母题</div>
+        <div class="info-value">时间 / 等待 / 手 / 梅花 / 后悔 / 温存</div>
+    </div>
+    <div>
+        <div class="info-label">情绪流动</div>
+        <div class="info-value">张枣的诗 → 冬天的慢 → 手的记忆 → 护手霜的仪式 → 梅花的转化</div>
+    </div>
+</div>
+</div>
+
+<!-- 梅花意境图 -->
+<div class="image-row">
+    <img src="images/image1.jpeg" alt="梅花意境图" onclick="openLightbox(this.src)" loading="lazy">
+    <img src="images/image2.jpeg" alt="梅花意境" onclick="openLightbox(this.src)" loading="lazy">
+</div>
+<div class="image-block">
+    <div class="caption">图1：梅花意境图（开篇）</div>
+</div>
+
+<!-- 文案正文 -->
+<div class="section">
+<div class="section-title">文案初稿 · 正文</div>
+
+<div class="body-text">
+<span class="section-number">一</span>
+<p>「只要想起一生中后悔的事，梅花便落满了南山。」</p>
+<p>诗人张枣写下这两句时，必是深冬。</p>
+<p>窗外无月，室内一灯如豆。读完阖卷，他久久看着自己的手——它们安静地搁在膝上，仿佛从未握过谁，也从未失去过谁。</p>
+<p>梅花为何落？</p>
+<p>不因风疾，因念起。</p>
+<p>那些没能说出口的话，没能握住的手，没能留下的人，都化作了漫山的梅花雪。</p>
+<p>冬天总是这样，让人想起一些事。</p>
+</div>
+
+<!-- 冬日手部特写 -->
+<div class="image-row">
+    <img src="images/image3.png" alt="冬日手部特写" onclick="openLightbox(this.src)" loading="lazy">
+    <img src="images/image4.jpeg" alt="冬日手部" onclick="openLightbox(this.src)" loading="lazy">
+</div>
+<div class="image-block">
+    <div class="caption">图2：冬日手部特写（情绪铺垫）</div>
+</div>
+
+<div class="body-text">
+<span class="section-number">二</span>
+<p>手是最诚实的编年史。</p>
+<p>婴孩以手辨母，恋人以手倾诉，老者以手抚物念旧。</p>
+<p>皮肤的纹理记录季节的更迭，指节的粗糙铭刻劳作的痕迹，而那些细微的干涩与龟裂，则是被忽略的光阴，留下的签名。</p>
+<p>尤其在冬天。</p>
+<p>冬天的手，尤其诚实。</p>
+<p>它知道岁月是什么，知道寒冷是什么，也知道那些被忽略的温柔，最后都留在了哪里。</p>
+<p>记得某个冬晨触到窗棂的霜，记得那些写下又涂去的字句，记得曾经的温度如何凉下来，也记得有些话，终究咽在了喉间。</p>
+</div>
+
+<div class="body-text">
+<span class="section-number">三</span>
+<p>「疏影横斜水清浅，暗香浮动月黄昏。」</p>
+<p>林逋终生未娶，住在孤山，只有梅花和鹤。</p>
+<p>人问他为何不娶，他说：梅妻鹤子，岂不清雅。</p>
+<p>后来人们都记得这个典故，却很少想：</p>
+<p>一个人在山上，对着梅花，过了几十年。</p>
+<p>那些冬夜，那些月色，那些梅开梅落的时刻，他都一个人看完了。</p>
+<p>疏影，是形。暗香，是魂。</p>
+<p>横斜、清浅、浮动、黄昏——这些字都很瘦，很冷。</p>
+<p>梅开了落，落了又开。</p>
+<p>他都看着。</p>
+<p>只是在那里，和梅花一起，过冬天。</p>
+</div>
+
+<div class="body-text">
+<span class="section-number">四</span>
+<p>冬日宜静。</p>
+<p>天光迟迟，从卯时到酉时，像隔了几个时节。万物收敛，连时间都慢得仿佛可以听见它流逝的声音。</p>
+<p>古人冬日如何度？</p>
+<p>《浮生六记》里说："冬夜拥炉，煮酒烹茶，闲话家常。"</p>
+<p>白居易写："晚来天欲雪，能饮一杯无？"</p>
+<p>他们懂得与冬天相处。不急着驱赶它，反而在寒意里寻一种清醒的欢喜。</p>
+<p>现代人的冬天，似乎总是匆忙的。</p>
+<p>赶地铁，赶方案，赶着把一年的事情在年底收尾。</p>
+<p>很少有人停下来，好好感受冬天。</p>
+<p>但其实，冬天是需要仪式的。</p>
+<p>哪怕只是在睡前，认真地为自己涂一次护手霜。</p>
+</div>
+
+<!-- 产品包装展示 -->
+<div class="image-block">
+    <img src="images/image5.png" alt="产品包装展示" onclick="openLightbox(this.src)" loading="lazy" style="max-width:80%;">
+    <div class="caption">图3：产品包装展示</div>
+</div>
+
+<!-- 产品卡片1 -->
+<div class="product-card">
+    <h3>插入产品卡片</h3>
+    <div class="card-name">YUAN · 别院寻梅护手霜</div>
+    <div class="detail-row"><span class="detail-label">香调</span><span class="detail-value">花香调 · 前调：梨 罗勒 马鞭草 · 中调：茉莉 莲花 梅花 · 后调：香根草 没药</span></div>
+    <div class="detail-row"><span class="detail-label">质地</span><span class="detail-value">轻盈乳霜质地，易吸收不油腻</span></div>
+    <div class="detail-row"><span class="detail-label">成分</span><span class="detail-value">天然植物油配方 · 乳木果油+霍霍巴油 · 不含矿物油、酒精、人工色素</span></div>
+    <div class="detail-row"><span class="detail-label">包装</span><span class="detail-value">草香纸环保彩盒 · 一体式铝管 · 弘一法师字体 · 极简质朴美学</span></div>
+    <div class="detail-row"><span class="detail-label">规格</span><span class="detail-value">50ml · 128元/支</span></div>
+</div>
+
+<div class="body-text">
+<span class="section-number">五</span>
+<p>YUAN，别院的院。</p>
+<p>这个名字让人想起江南的某个冬日，</p>
+<p>推开虚掩的木门，</p>
+<p>庭院里只有梅树和你。</p>
+<p>别院不在山阴，在心里。</p>
+<p>在喧哗世界里留的一方清净地。</p>
+<p>可以什么也不做，只是推门，观梅，让掌心慢慢回温。</p>
+<p>我们把这份清寂，藏进了一支护手霜里。</p>
+<p>不同于那些甜腻的果香或者浓烈的花香，</p>
+<p>YUAN的香调，是克制的。</p>
+<p>前调是梨和马鞭草，</p>
+<p>像冬天早晨的第一口凉气，清冽得让人心神一振。</p>
+<p>然后是茉莉和莲花，温柔地铺开，</p>
+<p>最后才是梅——</p>
+<p>不是甜香，而是木质里透出的那一点凛冽的白。</p>
+<p>后调的香根草和没药沉下去，</p>
+<p>像雪落在土地上的声音。</p>
+<p>这是一个需要耐心的香调。</p>
+<p>它不会在你涂抹的瞬间就释放全部，</p>
+<p>而是随着体温慢慢展开，</p>
+<p>像梅花在寒夜里一瓣一瓣地舒展。</p>
+<p>手心微热，暗香浮动。</p>
+</div>
+
+<!-- 产品使用场景 + 香调成分 -->
+<div class="image-row">
+    <img src="images/image6.png" alt="产品使用场景" onclick="openLightbox(this.src)" loading="lazy">
+    <img src="images/image7.jpeg" alt="香调成分可视化" onclick="openLightbox(this.src)" loading="lazy">
+</div>
+<div class="image-block">
+    <div class="caption">图4：产品使用场景 · 图5：香调成分可视化</div>
+</div>
+
+<div class="body-text">
+<span class="section-number">六</span>
+<p>涂护手霜，本是寻常小事。</p>
+<p>但在那几分钟里，掌心相贴，香气缓缓氤氲，当皮肤重新变得柔软——</p>
+<p>便拥有了一座别院。</p>
+<p>不必远行，不必造访，它就在为自己停下的那几分钟里。</p>
+<p>Lokadhatu，梵语，意为"世界"。</p>
+<p>光所照处，为世界；手所触处，亦世界；心所安处，更是世界。</p>
+<p>世界可以很大，大到容纳所有遗憾；也可以很小，小到只有掌心的温度。</p>
+<p>冬天还很长，</p>
+<p>但梅已经开了。</p>
+<p>从好好照顾自己的手开始。</p>
+<p>从推开那扇虚掩的院门开始。</p>
+<p>别院寻梅，寻的不只是梅，是一种与自己相处的方式。</p>
+<p>在冬天的别院里，我们终会等到春天。</p>
+</div>
+
+<!-- 品牌理念图 -->
+<div class="image-row">
+    <img src="images/image8.png" alt="品牌理念图" onclick="openLightbox(this.src)" loading="lazy">
+    <img src="images/image9.jpeg" alt="品牌理念" onclick="openLightbox(this.src)" loading="lazy">
+</div>
+<div class="image-block">
+    <div class="caption">图6：品牌理念图</div>
+</div>
+
+<!-- 产品信息卡片2 -->
+<div class="product-card">
+    <h3>产品信息</h3>
+    <div class="card-name">YUAN · 别院寻梅护手霜</div>
+    <div class="detail-row"><span class="detail-label">香调</span><span class="detail-value">花香调</span></div>
+    <div class="detail-row"><span class="detail-label">前调</span><span class="detail-value">梨 · 罗勒 · 马鞭草</span></div>
+    <div class="detail-row"><span class="detail-label">中调</span><span class="detail-value">茉莉 · 莲花 · 梅花</span></div>
+    <div class="detail-row"><span class="detail-label">后调</span><span class="detail-value">香根草 · 没药</span></div>
+    <div class="detail-row"><span class="detail-label">质地</span><span class="detail-value">轻盈乳霜质地，易吸收不油腻</span></div>
+    <div class="detail-row"><span class="detail-label">成分</span><span class="detail-value">天然植物油配方 · 乳木果油+霍霍巴油深层滋养 · 不含矿物油、酒精、人工色素 · 敏感肌可用</span></div>
+    <div class="detail-row"><span class="detail-label">包装</span><span class="detail-value">草香纸环保彩盒 · 一体式铝管设计 · 弘一法师字体 · 极简质朴美学</span></div>
+    <div class="detail-row"><span class="detail-label">规格</span><span class="detail-value">50ml · 128元/支</span></div>
+</div>
+
+<!-- 结尾互动 -->
+<div class="interaction-box">
+    <p>💬 留言区聊聊<br>你的手，记得哪个冬天的故事？</p>
+    <p>精选留言将获得 YUAN 试用装 5ml × 1</p>
+    <p>👆🏻 点个"在看"<br>把这座冬日别院，分享给需要温暖的人</p>
+    <div class="brand">lokadhatu</div>
+    <div class="brand-sub">光所照处 皆为世界</div>
+</div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    <span class="lb-close">x</span>
+    <img id="lightbox-img" src="" alt="查看大图">
+</div>
+
+<script>
+function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').style.display = 'flex';
+}
+function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+}
+</script>
+</body>
+</html>

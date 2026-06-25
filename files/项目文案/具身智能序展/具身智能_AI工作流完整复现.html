@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>具身智能策展·AI工作流完整复现</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600&display=swap');
+:root{--bg:#060A12;--navy:#0B1525;--panel:#0F1E35;--border:#1A3050;--cyan:#00D4FF;--mint:#00FFB2;--gold:#FFB830;--lilac:#B08EFF;--white:#F0F4FF;--muted:#6A84A8;--dim:#1E3050;--red:#FF5566;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--white);font-family:'Inter','Noto Serif SC',sans-serif;line-height:1.7;}
+.hdr{border-bottom:1px solid var(--border);padding:20px 36px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(6,10,18,0.97);backdrop-filter:blur(12px);z-index:100;}
+.hdr h1{font-size:11px;color:var(--cyan);letter-spacing:3px;font-weight:600;text-transform:uppercase;}
+.hdr span{font-size:10px;color:var(--muted);letter-spacing:2px;}
+.hero{padding:56px 36px 44px;border-bottom:1px solid var(--border);max-width:1040px;margin:0 auto;}
+.hero .ey{font-size:10px;color:var(--mint);letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;}
+.hero h2{font-size:38px;font-weight:700;line-height:1.2;margin-bottom:12px;font-family:'Noto Serif SC',serif;}
+.hero h2 span{color:var(--cyan);}
+.hero p{font-size:14px;color:var(--muted);max-width:580px;line-height:1.85;}
+.wnav{display:flex;padding:0 36px;border-bottom:1px solid var(--border);overflow-x:auto;max-width:1040px;margin:0 auto;}
+.wnav::-webkit-scrollbar{height:2px;}
+.wnav::-webkit-scrollbar-thumb{background:var(--border);}
+.wnav a{padding:13px 16px;font-size:10px;color:var(--muted);text-decoration:none;letter-spacing:1px;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;font-family:'JetBrains Mono',monospace;}
+.wnav a:hover{color:var(--white);}
+.wnav a.active{color:var(--cyan);border-bottom-color:var(--cyan);}
+.main{max-width:1040px;margin:0 auto;padding:0 36px 100px;}
+.stage{margin-top:60px;padding-top:18px;border-top:1px solid var(--border);}
+.sth{display:flex;align-items:flex-start;gap:18px;margin-bottom:24px;}
+.snum{font-size:9px;color:var(--muted);letter-spacing:3px;padding-top:6px;min-width:40px;font-family:'JetBrains Mono',monospace;}
+.stb h3{font-size:24px;font-weight:700;font-family:'Noto Serif SC',serif;margin-bottom:5px;}
+.stb p{font-size:12px;color:var(--muted);}
+.pb{background:#030810;border:1px solid var(--lilac);border-left:4px solid var(--lilac);border-radius:4px;padding:20px 24px;margin-bottom:16px;}
+.pb .lb{font-size:9px;color:var(--lilac);letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;font-family:'JetBrains Mono',monospace;}
+.pb .ct{font-size:12px;color:#C8D8F0;font-family:'JetBrains Mono',monospace;line-height:1.85;white-space:pre-wrap;}
+.ao{background:var(--panel);border:1px solid var(--border);border-left:4px solid var(--cyan);border-radius:4px;padding:20px 24px;margin-bottom:16px;}
+.ao .lb{font-size:9px;color:var(--cyan);letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;font-family:'JetBrains Mono',monospace;}
+.ao .ct{font-size:13px;color:var(--white);line-height:1.9;white-space:pre-wrap;}
+.jb{background:#0A1E0F;border:1px solid #1A5030;border-left:4px solid var(--mint);border-radius:4px;padding:18px 22px;margin-bottom:16px;}
+.jb .lb{font-size:9px;color:var(--mint);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;font-family:'JetBrains Mono',monospace;}
+.jb .ct{font-size:13px;color:#C0F0D8;line-height:1.85;}
+.sb{background:#1A1000;border:1px solid #503010;border-left:4px solid var(--gold);border-radius:4px;padding:18px 22px;margin-bottom:16px;}
+.sb .lb{font-size:9px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;font-family:'JetBrains Mono',monospace;}
+.sb .ct{font-size:13px;color:#FFE0A0;line-height:1.85;}
+.it{background:#100A1E;border:1px solid #301A50;border-radius:4px;padding:12px 16px;margin-bottom:12px;font-size:11.5px;color:var(--muted);line-height:1.7;}
+.it strong{color:var(--lilac);}
+.sdiv{display:flex;align-items:center;gap:10px;margin:18px 0;color:var(--border);font-size:10px;letter-spacing:2px;font-family:'JetBrains Mono',monospace;}
+.sdiv::before,.sdiv::after{content:'';flex:1;height:1px;background:var(--border);}
+.fr{background:linear-gradient(135deg,#001830 0%,#001020 100%);border:1px solid var(--cyan);border-radius:8px;padding:28px;margin-top:20px;}
+.fr .lb{font-size:9px;color:var(--cyan);letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;font-family:'JetBrains Mono',monospace;}
+.fr .bt{font-size:24px;font-family:'Noto Serif SC',serif;color:var(--white);font-weight:700;line-height:1.4;margin-bottom:8px;}
+.fr .st{font-size:12px;color:var(--muted);font-style:italic;}
+.sb2{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;}
+@media(max-width:680px){.sb2{grid-template-columns:1fr 1fr;}}
+.sc{background:var(--panel);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.sc .sh{padding:8px 12px;font-size:9px;letter-spacing:2px;font-family:'JetBrains Mono',monospace;font-weight:600;}
+.sc .sv{height:72px;display:flex;align-items:center;justify-content:center;font-size:26px;background:var(--navy);}
+.sc .sbdy{padding:10px 12px;font-size:11px;color:var(--white);line-height:1.7;}
+.sc .sm{padding:6px 12px;font-size:9px;font-family:'JetBrains Mono',monospace;border-top:1px solid var(--border);}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+@media(max-width:560px){.cg{grid-template-columns:1fr;}}
+.cc{background:var(--navy);border:1px solid var(--border);border-radius:6px;padding:14px 16px;}
+.cc .ct2{font-size:10px;letter-spacing:2px;margin-bottom:8px;font-family:'JetBrains Mono',monospace;font-weight:600;}
+.cc .cb{font-size:12px;color:var(--white);line-height:1.8;}
+.cc.sel{border-color:var(--mint);background:#051A0F;}
+.cc.rej{opacity:.42;}
+.bx{display:inline-block;padding:2px 8px;border-radius:20px;font-size:9px;letter-spacing:1px;font-family:'JetBrains Mono',monospace;font-weight:600;margin:2px;}
+.bc{background:rgba(0,212,255,.15);color:var(--cyan);}
+.bm{background:rgba(0,255,178,.12);color:var(--mint);}
+.bg{background:rgba(255,184,48,.12);color:var(--gold);}
+.bl{background:rgba(176,142,255,.12);color:var(--lilac);}
+.br{background:rgba(255,85,102,.12);color:var(--red);}
+.pb2{background:#030810;border:1px solid var(--gold);border-left:4px solid var(--gold);border-radius:4px;padding:16px 20px;margin-bottom:10px;}
+.pb2 .lb{font-size:9px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;font-family:'JetBrains Mono',monospace;}
+.pb2 .ct{font-size:11px;color:#C8D8F0;font-family:'JetBrains Mono',monospace;line-height:1.85;white-space:pre-wrap;}
+.sep{height:1px;background:var(--border);margin:16px 0;}
+.prog{display:flex;gap:5px;margin-bottom:36px;padding:24px 0 0;flex-wrap:wrap;}
+.ps{display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:4px;font-size:9px;letter-spacing:1px;font-family:'JetBrains Mono',monospace;background:rgba(0,255,178,.1);color:var(--mint);}
+.ps .d{width:5px;height:5px;border-radius:50%;background:var(--mint);}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <h1>具身智能序厅策展·AI工作流完整复现</h1>
+  <span>FULL WORKFLOW · 8 STAGES · SELF-CONTAINED</span>
+</header>
+<div class="hero">
+  <div class="ey">比较文学与世界文学博士研究生·策展快题完整工作记录</div>
+  <h2>从接到题目到交出方案<br><span>每一步，都在这里</span></h2>
+  <p>这不是结论的陈列。这是工作过程的完整记录——我问了AI什么、AI说了什么、我选了什么、我为什么这样选、我怎么迭代的。8个阶段，全部可复现。</p>
+</div>
+<nav class="wnav">
+  <a href="#s1">①概念锚定</a><a href="#s2">②概念转译</a><a href="#s3">③主题句推导</a><a href="#s4">④叙事结构</a><a href="#s5">⑤视觉意象</a><a href="#s6">⑥Prompt设计</a><a href="#s7">⑦分镜脚本</a><a href="#s8">⑧展陈文案</a>
+</nav>
+<div class="main">
+<div class="prog">
+  <div class="ps"><span class="d"></span>①概念锚定</div><div class="ps"><span class="d"></span>②概念转译</div><div class="ps"><span class="d"></span>③主题句推导</div><div class="ps"><span class="d"></span>④叙事结构</div><div class="ps"><span class="d"></span>⑤视觉意象</div><div class="ps"><span class="d"></span>⑥Prompt设计</div><div class="ps"><span class="d"></span>⑦分镜脚本</div><div class="ps"><span class="d"></span>⑧展陈文案</div>
+</div>
+
+<section class="stage" id="s1">
+<div class="sth"><div class="snum">01/08</div><div class="stb"><h3>概念锚定</h3><p>调动哲学资源，用AI扫描具身智能学术谱系，碰撞多角度解读，验证最优哲学锚点</p></div></div>
+<div class="pb"><div class="lb">↑ 我输入给AI的提示词</div><div class="ct">我需要为「具身智能」（Embodied AI）做展览序厅策展。
+
+请：
+1. 梳理具身智能在西方哲学史上的思想谱系（认识论→现象学→认知科学），简洁语言
+2. 列出4个候选策展哲学锚点：梅洛-庞蒂、海德格尔、维特根斯坦、贝特森
+   每个：核心概念 + 与具身AI同构性 + 策展潜力评分
+3. 推荐最适合面向普通观众的序厅入口锚点，三个理由
+
+不要学术论文格式，直接输出思考工具。</div></div>
+<div class="ao"><div class="lb">↓ AI OUTPUT · CLAUDE · 阶段①</div><div class="ct">【思想谱系】
+
+三条平行线索：
+
+第一条：笛卡尔→图灵机→符号主义AI
+「我思故我在」把智能定义为与身体无关的纯粹理性运算。图灵的计算机隐喻延续这个传统——给足算力和符号规则，身体是可以抽掉的噪音。这是传统AI的认识论根基。
+
+第二条：现象学传统→胡塞尔→海德格尔→梅洛-庞蒂
+胡塞尔：意识总是「关于某物的意识」，认知有其指向性。
+海德格尔：工具在熟练使用中消失于意识——「上手」比「在手」更本原，人与世界的关系先于主客分离。
+梅洛-庞蒂（最激进）：身体不是意识的容器，身体本身就是认知。知觉不是大脑对感官信号的加工，而是身体对世界的直接参与。
+
+第三条：控制论→维纳→吉布森→贝特森
+智能是生物体与环境之间的信息回路，不在大脑里，在关系里。吉布森的「可供性」：环境为身体提供行动可能性，意义在身体-环境交互中涌现。
+
+---
+
+【四个候选锚点】
+
+梅洛-庞蒂「身体图式」
+核心概念：身体有自己的智慧，先于意识运作。盲人的手杖成为身体延伸；熟练打字员不需要「想」手指位置。
+与具身AI同构性：★★★★★ 感觉运动回路=具身AI的感知-行动闭环，精准对应。
+策展潜力：★★★★★ 可感知性最高，每个人都有身体，零门槛入口，语言有诗性。
+
+海德格尔「在手性」
+核心概念：工具在熟练使用时消失，成为身体的透明延伸。「在手」先于「在眼前」。
+与具身AI同构性：★★★★ 机器人学习抓取物体的过程与此高度同构。
+策展潜力：★★★ 「此在」「存在」等术语门槛偏高，容易滑向工具论叙事。
+
+维特根斯坦「游戏中学规则」
+核心概念：规则不是在行动之前被理解的，而是在实践中被掌握的。
+与具身AI同构性：★★★ 对应强化学习中机器的具身训练。
+策展潜力：★★★ 叙事性弱，不易视觉化，适合展板不适合序厅影片。
+
+贝特森「心智生态学」
+核心概念：心智是跨越皮肤边界的系统属性，智能是生物体-环境整体的涌现特征。
+与具身AI同构性：★★★★ 对应多体协作机器人系统。
+策展潜力：★★★ 过于系统论，适合展览后半段，不适合序厅入口。
+
+---
+
+【推荐锚点：梅洛-庞蒂】
+
+理由一：可感知性最高。每个观众都能用自己的身体立刻验证——你不需要思考就知道怎么走路，你不需要计算就能接住抛来的球。零门槛入口。
+
+理由二：语言本身有诗性，可直接转化为展览文案：「我的身体是我在世界上存在的媒介」「身体知道的，比大脑知道的更多」。
+
+理由三：与具身AI技术逻辑同构性最精准。感觉运动回路既是梅洛-庞蒂的核心概念，也是具身AI最基础的工程架构。</div></div>
+<div class="jb"><div class="lb">✓ 我的判断与选择</div><div class="ct">AI给出了四个候选锚点，与我的预判一致，但它把贝特森的策展潜力评得稍高——我不同意。贝特森的「系统」视角太宏观，30秒序厅里无法落地成可感知的体验。
+
+最终选择：<strong style="color:var(--mint)">梅洛-庞蒂</strong>
+
+排除其他三个的理由：
+海德格尔——「在手性」的叙事方向是「工具消失」，容易把观众带向工具论视角，偏离「身体作为主体」这个策展核心立场。
+维特根斯坦——太适合做文字，不适合做影像。序厅是视觉体验优先的场合。
+贝特森——系统论视角需要观众已经理解「个体」才能理解「关系」，不适合作为第一个概念入口。</div></div>
+</section>
+
+<section class="stage" id="s2">
+<div class="sth"><div class="snum">02/08</div><div class="stb"><h3>概念转译</h3><p>把哲学命题转化为观众可感知的体验问题——这是策展思维与学术写作最大的差异所在</p></div></div>
+<div class="pb"><div class="lb">↑ 第一轮提示词</div><div class="ct">基于梅洛-庞蒂「身体是认知的原点」，为展览序厅生成5个概念转译方向。
+
+每个方向：
+- 核心体验问题（观众进门30秒内的感受，一句话）
+- 转译路径（哲学→体验，两句话）
+- 潜在风险（一句话）
+
+直接输出，不要前言。</div></div>
+<div class="ao"><div class="lb">↓ AI OUTPUT · 五个转译方向</div><div class="ct">方向1 · 镜像认知
+体验问题：当你看到机械手做出和你完全一样的动作，你感觉到了什么？
+转译路径：梅洛-庞蒂的镜像神经元研究揭示人类对他者身体运动的直觉共鸣。将这种共鸣扩展到机器身体，制造跨物种的认同时刻。
+风险：过于依赖视觉，忽略身体本体感觉维度，体验停留在「看」的层面。
+
+方向2 · 知识考古
+体验问题：智能一直都有身体，只是我们在过去七十年里忘记了这件事。
+转译路径：以哲学史时间线与AI发展史时间线平行叙事，展示具身被遗忘再被发现的过程。
+风险：叙事性太强，序厅30秒内无法完成有深度的历史叙述。
+
+方向3 · 感官放大
+体验问题：你的皮肤此刻正在做什么——而你完全不知道？
+转译路径：将人体感知的微观过程（神经信号、皮肤感受器）可视化放大，然后镜像呈现机器传感器的同等微观过程。
+风险：聚焦人体时间过长，机器的位置不够清晰，可能变成纯粹科普内容。
+
+方向4 · 边界消融
+体验问题：人和机器的边界，究竟在哪里？
+转译路径：从皮肤作为物理边界，到传感器作为数据边界，到两者边界的逐步模糊。
+风险：哲学问题太大，30秒内无法给出令人满意的回答，容易制造焦虑而非共鸣。
+
+方向5 · 身体觉知
+体验问题：你有没有想过——你之所以能理解眼前这个空间，是因为你有一个身体？
+转译路径：先触发观众本体感觉（重力感、皮肤温度、眼睛的自动对焦），让身体意识先于语言意识升起。然后引入机器正在艰难习得同样能力的叙事。
+风险：偏内省，需要观众愿意短暂停下来与自己的感受同在。</div></div>
+<div class="it"><strong>迭代判断：</strong>方向3和方向5最接近我要的，但两者都还不够精准。方向3太停留在视觉层面，方向5的内省风险是真实的。需要加一个约束：必须让观众「先用身体感受，再用大脑理解」，第一个反应必须是身体层面的，而不仅仅是视觉的。</div>
+<div class="sdiv">迭代·第二轮</div>
+<div class="pb"><div class="lb">↑ 第二轮追加约束</div><div class="ct">在方向3和方向5基础上，加入核心约束：
+
+序厅的第一个反应必须是身体层面的——本体感觉、皮肤感、重力感，而不仅仅是视觉的。观众必须「先用身体感受，再用大脑理解」。
+
+在这个约束下，提炼出最终一个转译方向，150字以内：核心体验问题+转译机制+选择理由。</div></div>
+<div class="ao"><div class="lb">↓ AI OUTPUT · 迭代版最终转译方向</div><div class="ct">最终转译方向：身体先于语言
+
+核心体验问题：在你意识到发生了什么之前，你的身体已经做出了反应——这就是智能最原始的形态。
+
+转译机制：序厅影片的开场不给观众「理解的时间」。神经放电的微观画面在黑暗中骤然出现，视觉冲击触发观众的惊觉反射（这本身就是具身反应的现场演示）。然后画面逐渐清晰——那是人类自己的神经系统。观众意识到：刚才那个「先于大脑的反应」，就是身体在认知。然后机器登场，同样的结构，不同的材质。「原来它和我在做同一件事」——这个认知跳跃自然发生，不需要被告知。
+
+选择理由：这个方向把梅洛-庞蒂的命题变成了观众身体的现场体验，而不是关于身体的知识点。策展最难做到、也最有价值的事，就是让理论在观众身上真实发生。</div></div>
+<div class="sb"><div class="lb">★ 确认的转译方向</div><div class="ct">「身体先于语言」路径
+
+序厅的设计目标不是让观众理解具身智能，而是让具身智能在观众身上发生一次。
+
+核心机制：触发身体反应→观众意识到这个反应→看到机器在做同样的事→「认出彼此」的共鸣。
+
+这是整个策展方案的体验地基，后续所有内容决策都从这里出发。</div></div>
+</section>
+
+<section class="stage" id="s3">
+<div class="sth"><div class="snum">03/08</div><div class="stb"><h3>主题句推导</h3><p>确立选择标准，用AI生成10个候选主题句，对比张力感与可感知度，完成推导</p></div></div>
+<div class="pb"><div class="lb">↑ 提示词</div><div class="ct">基于以下推导逻辑，生成10个候选展览主题句：
+
+推导逻辑：
+- 哲学锚点：梅洛-庞蒂，身体是认知的原点
+- 体验目标：观众先用身体感受，再意识到机器在做同样的事
+- 要求：关键词含感知/身体/行动/智能中至少两个；人和机器必须同时在句子里成立
+
+每句标注评分（1-5）：A张力感 B可感知性 C哲学深度 D中文美感
+格式：序号. 主题句 [A:x B:x C:x D:x]</div></div>
+<div class="ao"><div class="lb">↓ AI OUTPUT · 10个候选主题句</div><div class="ct">1.  感知即身体，行动即智能          [A:5 B:5 C:4 D:5]
+2.  智能从身体中诞生                [A:2 B:4 C:3 D:3]
+3.  身体是第一个智能                [A:3 B:5 C:4 D:4]
+4.  当机器开始感受，人类重新认识自己  [A:4 B:4 C:3 D:3]
+5.  肉身即算法，感知即程序          [A:4 B:3 C:3 D:2]
+6.  我们都在用身体思考              [A:3 B:5 C:4 D:4]
+7.  触碰世界的方式决定理解世界的深度  [A:3 B:4 C:4 D:4]
+8.  没有身体，就没有智能            [A:3 B:5 C:4 D:3]
+9.  感知在先，理解在后              [A:4 B:4 C:5 D:4]
+10. 身体与机器，共同学习如何在世界中存在 [A:4 B:3 C:4 D:3]</div></div>
+<div class="jb"><div class="lb">✓ 我的评估与淘汰逻辑</div><div class="ct">AI的评分与我的判断有几处不一致，我按自己的标准重新评估：
+
+<span class="bx br">排除</span> 第2句「智能从身体中诞生」——陈述句，没有张力，像科普说明而非主题句
+<span class="bx br">排除</span> 第4句「当机器开始感受，人类重新认识自己」——重心偏向机器主体性，失去「身体作为认知原点」的立场
+<span class="bx br">排除</span> 第5句「肉身即算法」——把身体物化，与有机感+精密感的气质相悖，冷硬且有点冒犯
+<span class="bx br">排除</span> 第10句——太长，像描述句而非主题句，不适合作为视觉主字
+
+<span class="bx bm">选定</span> 第1句「感知即身体，行动即智能」
+
+补充选择理由：「即」这个字制造了等号，但等号两边各有一整个哲学传统在支撑，所以有密度、有张力。两句并置形成闭环，四字×2的节奏结构有力量也有留白。最关键的是：人和机器同时在这句话里成立——人类感知是身体的，机器行动是智能的，但两者在同一个句子的逻辑里共存。</div></div>
+<div class="fr"><div class="lb">FINAL · 确立的核心主题句</div><div class="bt">「感知即身体，行动即智能」</div><div class="st">Sensing is Body · Acting is Intelligence</div></div>
+</section>
+
+<section class="stage" id="s4">
+<div class="sth"><div class="snum">04/08</div><div class="stb"><h3>叙事结构设计</h3><p>用AI对比两套节拍方案，选定情绪递进路径，推导五节拍结构</p></div></div>
+<div class="pb"><div class="lb">↑ 提示词</div><div class="ct">为30秒序厅视频设计两套叙事节拍结构：
+
+已知：主题句「感知即身体，行动即智能」
+目标：观众从「旁观者」→「具身参与者」的身份转换
+
+方案A：信息递进型（5节拍，逐步传递知识点）
+方案B：情绪递进型（5节拍，逐步累积情绪强度）
+
+每节拍：时间点+画面方向一句话+情绪状态一个词
+
+最后说明哪套更适合序厅，为什么。</div></div>
+<div class="ao"><div class="lb">↓ AI OUTPUT · 两套节拍方案</div><div class="ct">方案A · 信息递进型
+节拍1 [0-6s]   人体神经系统信号传导示意       情绪：中性/知性
+节拍2 [6-12s]  感觉皮层的工作方式示意         情绪：好奇
+节拍3 [12-18s] 机器传感器阵列的数据采集       情绪：认知震撼
+节拍4 [18-24s] 身体-感知-行动闭环图示         情绪：理解
+节拍5 [24-30s] 展览七个展区概览与引导         情绪：期待
+
+方案B · 情绪递进型
+节拍1 [0-3s]   黑暗中神经放电骤然刺破画面     情绪：敬畏（身体先于大脑反应）
+节拍2 [3-10s]  自己的皮肤眼睛手指被逐帧放大   情绪：好奇（认出是自己的感官）
+节拍3 [10-18s] 机械手与人类手交叠粒子流动     情绪：共鸣（人机互相辨认）
+节拍4 [18-26s] 四要素同时可见闭环在画面成形   情绪：震撼（概念在眼前涌现）
+节拍5 [26-30s] 主题句浮现光线引向展厅入口     情绪：引导（带着问题走进去）
+
+建议选方案B。序厅的功能不是教学。方案A假设观众进来是为了接收知识的，但人在陌生空间里的前30秒不具备知识接收状态。方案B的逻辑是：先让身体反应，再让情绪积累，最后让理解自然涌现。这个顺序符合梅洛-庞蒂的认知路径——身体在先，意识在后。</div></div>
+<div class="cg">
+  <div class="cc rej"><div class="ct2" style="color:var(--muted)">方案A·信息递进型 ✗ 排除</div><div class="cb" style="color:var(--muted)">假设观众准备好接收知识<br>把序厅变成了前厅讲解<br>「理解」是被灌输的<br>与具身体验方向相悖</div></div>
+  <div class="cc sel"><div class="ct2" style="color:var(--mint)">方案B·情绪递进型 ✓ 选定</div><div class="cb">身体反应在先，意识在后<br>「理解」在情绪积累中自然涌现<br>符合梅洛-庞蒂的认知路径<br>五节拍完成身份转换</div></div>
+</div>
+<div class="jb"><div class="lb">✓ 我的补充判断</div><div class="ct">AI的建议与我的判断一致，但理由不够彻底。我要补充一点：
+
+方案A把「具身智能」作为一个需要被解释的对象，方案B把「具身智能」作为观众正在经历的过程。
+
+前者是关于具身的展览，后者是具身的展览。
+
+这个差异决定了整个序厅乃至整个展览的叙事立场。选方案B不只是因为它更好看，而是因为它在形式上兑现了内容的承诺。</div></div>
+</section>
+
+<section class="stage" id="s5">
+<div class="sth"><div class="snum">05/08</div><div class="stb"><h3>视觉意象选择</h3><p>建立意象选择的唯一标准：人机共属性——必须同时属于人体和机器</p></div></div>
+<div class="pb"><div class="lb">↑ 提示词</div><div class="ct">为序厅视频选定核心视觉意象。
+
+唯一选择标准：意象必须同时属于人体和机器——人体有，机器也有，两者形态高度同构。叫「人机共属性」。
+
+生成10个候选意象，每个说明：人体形态+机器形态+人机共属性★评分+情绪载体能力
+
+最后推荐最优6个，按叙事顺序排列。</div></div>
+<div class="ao"><div class="lb">↓ AI OUTPUT · 意象候选与推荐</div><div class="ct">1. 神经突触放电
+   人体：轴突末梢的电信号脉冲，蓝白色闪光
+   机器：印刷电路板上的电流路径，相似光轨形态
+   人机共属性：★★★★★  情绪：敬畏
+
+2. 眼球虹膜/摄像头光圈
+   人体：虹膜肌肉的环形收缩，有机纹理
+   机器：镜头光圈叶片的几何收缩，金属精密
+   人机共属性：★★★★★  情绪：好奇
+
+3. 指尖触觉/传感器接触点
+   人体：指纹纹路，皮肤触觉受体密集分布
+   机器：机械手指尖的压力传感器阵列
+   人机共属性：★★★★★  情绪：共鸣（情感强度最高的意象）
+
+4. 骨骼关节/机器人关节
+   人体：X光下骨骼运动，关节铰链结构
+   机器：机器人伺服电机与关节架构
+   人机共属性：★★★★  情绪：震撼
+
+5. 心跳节律/脉冲信号
+   人体：心电图波形，规律有机节律
+   机器：电子脉冲信号波形，数字节律
+   人机共属性：★★★★  情绪：共鸣
+
+6. 大脑皮层褶皱/神经网络拓扑
+   人体：大脑皮层沟回结构
+   机器：深度神经网络层级连接图
+   人机共属性：★★★  情绪：敬畏，但过于抽象，视觉可读性低
+
+7. 耳蜗/麦克风振膜
+   人体：内耳耳蜗螺旋结构，毛细胞阵列
+   机器：定向麦克风振膜表面微结构
+   人机共属性：★★★★  情绪：好奇，但视觉冲击力弱
+
+8. 皮肤纹理/传感器表面
+   人体：皮肤微观纹理，毛孔分布
+   机器：柔性传感器表面微观格栅
+   人机共属性：★★★★  情绪：细腻，但缺乏叙事张力
+
+9. 脊椎/机器人脊柱
+   人体：脊椎骨节叠加，柔韧支撑结构
+   机器：人形机器人脊柱模块
+   人机共属性：★★★★  情绪：力量感，但与「感知」主题距离较远
+
+10. 手部运动轨迹/机械臂路径
+    人体：高速摄影下手部运动光轨残影
+    机器：机械臂运动路径数据可视化
+    人机共属性：★★★★  情绪：动感，适合过渡镜头
+
+推荐6个按叙事顺序：
+① 神经突触（敬畏/触发）→ ② 眼球虹膜（好奇/浸入）→ ③ 指尖接触（共鸣/转折）→ ④ 骨骼点云（震撼/升华）→ ⑤ 四要素交织（升华/闭环）→ ⑥ 主题句光线（引导/收尾）</div></div>
+<div class="jb"><div class="lb">✓ 我的调整</div><div class="ct">基本认可AI的推荐顺序，但做一处调整：
+
+AI推荐的第④是「骨骼关节」，我把它改为「全身骨架数据点云+人形机器人同步镜像」的复合意象——不只是骨骼结构的相似，而是整个运动系统在空间中的同步，视觉震撼感更强，也更清楚呈现「闭环」概念。
+
+第⑤的「四要素交织」是我自己加的——AI没有在候选里单独列出这个意象，但它对应情绪递进的第四节拍「升华」，是概念落地的关键时刻，必须有一个画面让「身体×感知×行动×环境」四个元素同时可见。这需要在后期剪辑阶段用Runway的多画面合成来实现。</div></div>
+</section>
+
+<section class="stage" id="s6">
+<div class="sth"><div class="snum">06/08</div><div class="stb"><h3>Prompt设计</h3><p>逐镜头设计AI视频提示词，展示SHOT 3的完整三轮迭代，以及全部6个镜头最终Prompt</p></div></div>
+<div class="pb"><div class="lb">↑ SHOT 3·第一轮Prompt请求</div><div class="ct">为以下镜头生成Sora视频提示词：
+
+镜头：机械手指尖与人类手指尖相触极近景，接触点有微观导电粒子双向流动
+情绪目标：「认出彼此」的共鸣，敬畏感的宁静
+时长：5秒
+
+输出：完整英文Prompt（150字以内）+负向词+关键词选择逻辑</div></div>
+<div class="ao"><div class="lb">↓ AI OUTPUT · SHOT 3 Prompt 初版 v1</div><div class="ct">Prompt v1:
+Extreme close-up of a robotic fingertip and a human fingertip touching. Glowing particles flow between them at the contact point. Warm golden light. Macro lens. Slow motion, 5 seconds.
+
+负向词：no text, no logo, no lens flare
+
+关键词逻辑：
+- Extreme close-up：确保微观尺度
+- Glowing particles：表现粒子流动
+- Warm golden light：营造温暖感</div></div>
+<div class="it"><strong>迭代 Round 1→2：</strong>「Glowing particles」在Sora里容易生成过于CGI感的效果——类似游戏特效的发光粒子，失去了有机质感。「Warm golden light」让整体色调太暖，失去了冷蓝白底色基调。需要分层处理光源。</div>
+<div class="ao"><div class="lb">↓ AI OUTPUT · SHOT 3 Prompt 第二版 v2</div><div class="ct">Prompt v2:
+Extreme macro close-up: human fingertip meeting robotic fingertip. At contact point, microscopic conductive particles flow bidirectionally — organic skin texture against precision-machined metal. Cold blue-white ambient light. Warm glow only at exact contact point. Ultra-slow push-in. Film grain, organic quality.
+
+负向词：no text, no UI, no CGI glitch, no lens flare, no neon glow</div></div>
+<div class="it"><strong>迭代 Round 2→3：</strong>「microscopic conductive particles」描述不够精确——Sora对「conductive」这个物理属性词响应不稳定，有时生成电弧，有时生成液体效果。改为更视觉化的描述。同时补充「fingerprint ridges」强化人体一侧的有机感。</div>
+<div class="sb"><div class="lb">★ SHOT 3·最终确认Prompt（第三版）</div><div class="ct"><strong style="color:var(--gold)">正向 Prompt：</strong>
+Extreme macro close-up of a human fingertip and a robotic fingertip touching. Visible fingerprint ridges press against precision-machined metal surface. At the exact contact point, tiny luminous spheres drift bidirectionally between organic skin and cool metal — like slow breath made visible. Cold blue-white ambient light fills the frame. A single warm amber glow emanates only from the contact point itself. Camera: ultra-slow push-in, 0.3x speed. Film grain. Awe-inspiring quiet. Cinematic photography, not CGI rendered.
+
+<strong style="color:var(--red)">负向 Prompt：</strong>
+no text, no UI, no HUD, no lens flare, no electric arc, no neon glow, no CGI glitch, no watermark, no motion blur excess, no cartoon style, no sci-fi overlay</div></div>
+<div class="sep"></div>
+<div style="display:grid;gap:10px;">
+<div class="pb2"><div class="lb">SHOT 1·神经突触放电·最终Prompt</div><div class="ct">Extreme macro: neural synapses firing in absolute darkness. Electric signals race along axons as brief bioluminescent pulses — cold white-blue sparks in deep black. Camera static then sudden ultra-fast push toward a single firing synapse. Organic, scientifically beautiful. Film grain. 5 seconds.
+NEG: no text, no labels, no cartoon, no colored smoke</div></div>
+<div class="pb2" style="border-left-color:#00D4B4;"><div class="lb" style="color:#00D4B4;">SHOT 2·眼球虹膜↔摄像头光圈·最终Prompt</div><div class="ct">Cross-section of human iris: organic muscle fibers contracting in radial pattern. Slow morph transition — iris gradually transforms into camera aperture blades closing, mechanical precision mirroring biological structure. Deep teal and navy palette. Ultra-macro. Meditative pace, 5 seconds.
+NEG: no text, no aggressive color, no neon, no CGI render quality</div></div>
+<div class="pb2" style="border-left-color:var(--gold);"><div class="lb" style="color:var(--gold);">SHOT 4·骨骼数据点云·最终Prompt</div><div class="ct">Full human skeleton as luminous data point cloud in motion — walking slowly, each joint an amber node. Camera pulls back to reveal humanoid robot skeleton in identical motion, nodes in cool blue. Both walk in perfect synchrony. Deep space black background. Wide shot slowly zooming out. Monumental quiet.
+NEG: no labels, no text overlay, no cartoon robot, no medical diagram style</div></div>
+<div class="pb2" style="border-left-color:var(--mint);"><div class="lb" style="color:var(--mint);">SHOT 5·四要素交织闭合·最终Prompt</div><div class="ct">Fast rhythmic montage: human hand reaching — robot hand reaching — eye opening — camera aperture opening — foot touching ground — robotic foot sensor touching surface. Synchronized to a silent pulse. Final frame: all four elements visible simultaneously in quadrant composition. Energy builds to stillness.
+NEG: no text, no UI, no shaky cam excess</div></div>
+<div class="pb2"><div class="lb">SHOT 6·主题句·光向展厅·最终Prompt</div><div class="ct">Slow fade from near-black. Minimal Chinese characters appear centered: 感知即身体，行动即智能 — clean white elegant sans-serif on deep navy. Text holds 2 seconds. Then: subtle light source shifts direction implying a luminous doorway ahead. Camera tilts gently toward the implied entrance. Peaceful invitation. Fade to deep navy.
+NEG: no aggressive animation, no particle effects on text</div></div>
+</div>
+</section>
+
+<section class="stage" id="s7">
+<div class="sth"><div class="snum">07/08</div><div class="stb"><h3>30秒分镜脚本</h3><p>模型分工逻辑·完整六镜头叙事·审片标准</p></div></div>
+<div class="ao"><div class="lb">↓ AI OUTPUT · 模型分工建议</div><div class="ct">基于六个镜头的特性，建议以下模型分工：
+
+Sora（主生成）→ SHOT 1, 3, 4
+理由：需要物理真实感——神经放电的光轨行为、指尖接触的材质感、骨骼点云的空间感。Sora在处理有机物理运动时明显优于其他模型，光线行为最接近真实摄影。
+
+Kling 2.0（微距细节）→ SHOT 2
+理由：眼球→摄像头变形镜头需要精细纹理描述。Kling对微距纹理还原更稳定，变形动画流畅度高于Sora。
+
+Runway Gen-3（剪辑整合）→ SHOT 5, 6
+理由：SHOT 5是多素材快切蒙太奇，需要在不同来源素材之间做风格统一；SHOT 6是收尾淡出，Runway的视频过渡效果最自然。
+
+后期建议：每个镜头生成3-5个版本，以「有机感」为第一选取标准，「技术感」反而是减分项。宁可选一个「不够科技感但身体感更强」的版本。</div></div>
+<div class="sb2">
+  <div class="sc"><div class="sh" style="color:var(--cyan);background:#001525;">SHOT 1 · 00:00–00:05</div><div class="sv" style="background:#030810;">⚡</div><div class="sbdy"><strong>神经突触放电</strong><br>黑暗中信号高速传导<br>超微距·冷白蓝色调<br><span class="bx bc" style="margin-top:4px;display:inline-block;">Sora</span></div><div class="sm" style="color:var(--cyan);">敬畏·身体先于大脑反应</div></div>
+  <div class="sc"><div class="sh" style="color:#00D4B4;background:#001A18;">SHOT 2 · 00:05–00:10</div><div class="sv" style="background:#030E0C;">👁</div><div class="sbdy"><strong>眼球→摄像头变形</strong><br>虹膜有机纹理<br>↓光圈金属精密<br><span class="bx bm" style="margin-top:4px;display:inline-block;">Kling</span></div><div class="sm" style="color:#00D4B4;">好奇·认出自己的感官</div></div>
+  <div class="sc"><div class="sh" style="color:var(--lilac);background:#130A20;">SHOT 3 · 00:10–00:15</div><div class="sv" style="background:#0A0515;">🤝</div><div class="sbdy"><strong>人机指尖接触</strong><br>极近景·粒子双向流动<br>0.3x慢推<br><span class="bx bl" style="margin-top:4px;display:inline-block;">Sora核心</span></div><div class="sm" style="color:var(--lilac);">共鸣·认出彼此的瞬间</div></div>
+  <div class="sc"><div class="sh" style="color:var(--gold);background:#1A1000;">SHOT 4 · 00:15–00:20</div><div class="sv" style="background:#0E0800;">🦾</div><div class="sbdy"><strong>骨骼数据点云</strong><br>人形机器人同步镜像<br>拉开全景<br><span class="bx bg" style="margin-top:4px;display:inline-block;">Sora</span></div><div class="sm" style="color:var(--gold);">震撼·尺度感扩张</div></div>
+  <div class="sc"><div class="sh" style="color:var(--mint);background:#001A0C;">SHOT 5 · 00:20–00:25</div><div class="sv" style="background:#000F08;">∞</div><div class="sbdy"><strong>四要素交织闭合</strong><br>身体×感知×行动×环境<br>快切蒙太奇<br><span class="bx bm" style="margin-top:4px;display:inline-block;">Runway</span></div><div class="sm" style="color:var(--mint);">升华·闭环在画面中可见</div></div>
+  <div class="sc"><div class="sh" style="color:var(--cyan);background:#001525;">SHOT 6 · 00:25–00:30</div><div class="sv" style="background:#030810;">→</div><div class="sbdy"><strong>主题句·光向展厅</strong><br>字幕浮现·淡出<br>光线引导入场<br><span class="bx bc" style="margin-top:4px;display:inline-block;">Runway</span></div><div class="sm" style="color:var(--cyan);">引导·带着问题走进展览</div></div>
+</div>
+</section>
+
+<section class="stage" id="s8">
+<div class="sth"><div class="snum">08/08</div><div class="stb"><h3>展陈内容输出</h3><p>用AI生成四组展板文案，迭代精简，确认最终克制程度</p></div></div>
+<div class="pb"><div class="lb">↑ 第一轮提示词</div><div class="ct">为序厅生成4组展板文案：
+
+1. 主题句（中英双语，不超过10个中文字）
+2. 具身智能100字阐释（不能有学术语言，像聪明的朋友在说话）
+3. 传统AI vs 具身AI对比（不超过60字，用对比结构）
+4. 入场引导语（不超过50字，读完想走进去）
+
+克制原则：能用5个字说清楚的不用10个字。</div></div>
+<div class="ao"><div class="lb">↓ AI OUTPUT · 文案初版</div><div class="ct">1. 感知即身体，行动即智能 / Sensing is Body · Acting is Intelligence
+
+2. 智能不是从天而降的算法奇迹，它诞生于一个身体与世界的每一次真实接触。当机器人的手指第一次感受到物体的重量，当它的传感器习得了「轻重」的感觉运动回路，它才开始真正理解什么叫做抓握。具身智能，就是把「在场」还给智能。不是计算，是经历。
+
+3. 传统AI：数据输入→模式识别→决策输出。智能在算法里。
+   具身AI：身体接触→感知积累→行动学习→反馈成长。智能在经历里。
+
+4. 你正在进入一个关于感知的展览。你的身体知道的，比你的大脑更多。接下来30分钟，我们一起重新认识这件事。</div></div>
+<div class="it"><strong>迭代判断：</strong>第2条阐释还有「感觉运动回路」这种学术词，违反了「像聪明朋友说话」的原则。第4条引导语的第二句「你的身体知道的比你的大脑更多」过于直白，把答案说出来了——引导语应该制造悬念而非给出结论。要求AI重写这两条。</div>
+<div class="pb"><div class="lb">↑ 迭代提示词</div><div class="ct">重写第2条和第4条：
+
+第2条：完全不能出现「感觉运动回路」「算法」「模型」「参数」。读完之后读者要有一个身体层面的感受，而不只是理解一个知识点。
+
+第4条：不要给出任何答案或结论，只制造一个让人想走进去的悬念。50字以内。</div></div>
+<div class="ao"><div class="lb">↓ AI OUTPUT · 迭代版</div><div class="ct">第2条（修订版）：
+智能并非诞生于服务器机架，而是涌现于身体与世界的每一次碰触。当机器人用指尖感受物体的重量、温度、摩擦——不是通过计算，而是通过感知——它才真正开始理解世界。就像你不需要学习「平衡的物理公式」就知道怎么骑自行车。具身智能，是把「在场」还给智能。
+
+第4条（修订版）：
+你正在进入一个关于「感知」的展览。在接下来30分钟里，你将重新认识你的身体——以及与你共享这个世界的另一种智能形式。</div></div>
+<div class="fr"><div class="lb">FINAL · 序厅展陈内容·全部四组确认文案</div>
+<div style="display:grid;gap:20px;margin-top:6px;">
+<div><div style="font-size:9px;color:var(--cyan);letter-spacing:3px;margin-bottom:9px;font-family:'JetBrains Mono',monospace;">TEXT 01 · 主题句 · 展览入口主视觉</div><div style="font-size:26px;font-family:'Noto Serif SC',serif;color:var(--white);margin-bottom:5px;">「感知即身体，行动即智能」</div><div style="font-size:12px;color:var(--muted);font-style:italic;">Sensing is Body · Acting is Intelligence</div></div>
+<div class="sep"></div>
+<div><div style="font-size:9px;color:var(--mint);letter-spacing:3px;margin-bottom:9px;font-family:'JetBrains Mono',monospace;">TEXT 02 · 具身智能100字阐释</div><div style="font-size:14px;color:var(--white);line-height:2;">智能并非诞生于服务器机架，而是涌现于身体与世界的每一次碰触。当机器人用指尖感受物体的重量、温度、摩擦——不是通过计算，而是通过感知——它才真正开始理解世界。就像你不需要学习「平衡的物理公式」就知道怎么骑自行车。具身智能，是把「在场」还给智能。</div></div>
+<div class="sep"></div>
+<div><div style="font-size:9px;color:var(--gold);letter-spacing:3px;margin-bottom:9px;font-family:'JetBrains Mono',monospace;">TEXT 03 · 传统AI vs 具身AI · 技术对比</div><div style="font-size:14px;color:var(--white);line-height:2;">传统AI：数据输入 → 模式识别 → 决策输出&nbsp;&nbsp;<span style="color:var(--muted)">（智能在算法里）</span><br>具身AI：身体接触 → 感知积累 → 行动学习 → 反馈成长&nbsp;&nbsp;<span style="color:var(--mint)">（智能在经历里）</span></div></div>
+<div class="sep"></div>
+<div><div style="font-size:9px;color:var(--lilac);letter-spacing:3px;margin-bottom:9px;font-family:'JetBrains Mono',monospace;">TEXT 04 · 序厅入场引导语</div><div style="font-size:17px;color:var(--white);line-height:2;font-family:'Noto Serif SC',serif;">你正在进入一个关于「感知」的展览。<br>在接下来30分钟里，你将重新认识你的身体——<br>以及与你共享这个世界的另一种智能形式。</div></div>
+</div></div>
+</section>
+
+</div>
+<script>
+const navLinks=document.querySelectorAll('.wnav a');
+const sections=document.querySelectorAll('.stage');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)current=s.id;});
+  navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current);});
+});
+</script>
+</body>
+</html>
