@@ -108,10 +108,11 @@ nav a:hover { color: #222222; }
 /* ===== Projects Grid ===== */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 32px;
-    max-width: 1200px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1100px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 .project-card {
     background: #fff;
@@ -130,9 +131,12 @@ nav a:hover { color: #222222; }
 }
 .project-logo {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: 160px;
+    object-fit: contain;
+    object-position: center;
     display: block;
+    padding: 24px 40px;
+    background: #f8f8f8;
 }
 .project-content {
     padding: 24px;
