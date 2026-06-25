@@ -664,61 +664,6 @@ nav a:hover { color: #222222; }
     font-weight: 300;
 }
 
-/* ===== Edit Mode ===== */
-.edit-toolbar {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 9999;
-    display: flex;
-    gap: 10px;
-}
-.edit-btn, .save-btn {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-}
-.edit-btn {
-    background: #fff;
-    color: #222222;
-    border: 1px solid #e0e0e0;
-}
-.edit-btn:hover { background: #f0f0f0; }
-.edit-btn.active { background: #222222; color: #fff; border-color: #222222; }
-.save-btn { background: #222222; color: #fff; }
-.save-btn:hover { background: #444444; }
-.edit-toolbar .tooltip {
-    position: absolute;
-    right: 52px;
-    background: #222222;
-    color: #fff;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 11px;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
-}
-.edit-btn:hover .tooltip, .save-btn:hover .tooltip { opacity: 1; }
-.edit-mode [contenteditable="true"] {
-    outline: 1px dashed #aaa;
-    cursor: text;
-    padding: 1px 3px;
-    border-radius: 2px;
-}
-.edit-mode [contenteditable="true"]:hover { outline-color: #222222; }
-.edit-mode [contenteditable="true"]:focus { outline: 2px solid #222222; background: #fffdf0; }
-
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
     nav { padding: 15px 5%; }
