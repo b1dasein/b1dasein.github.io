@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="edit-mode">
+<body >
     <!-- Lightbox -->
     <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
         <span class="lb-close">x</span>
@@ -28,20 +28,13 @@
         </ul>
     </nav>
 
-    <!-- Edit Toolbar -->
-    <div class="edit-toolbar" id="editToolbar">
-        <button class="edit-btn active" id="editToggleBtn">完成</button>
-        <button class="save-btn" id="saveHtmlBtn">
-            保存
-            <span class="tooltip">保存HTML</span>
-        </button>
-    </div>
+    
 
     <!-- ===== 首页 ===== -->
     <div class="page-section" id="home">
         <div class="header">
-            <h1 contenteditable="true">ABOUT ME</h1>
-            <p class="intro-text" contenteditable="true">2026届暨南大学硕士，比较文学与世界文学专业，拥有内容行业经验。<div>专注于人文、科技与叙事的交叉地带，主导「阅读兽 ReadingCub」大型通识阅读产品的完整内容开发流程——从知识框架搭建、书稿撰写、学术核校到成稿交付的全链路工作。</div><div>同时具备品牌文案策划、学术论文研究、AI工具链开发等多方面能力，为山水比德、纸条作文等项目提供专业内容服务。</div></p>
+            <h1>ABOUT ME</h1>
+            <p class="intro-text">2026届暨南大学硕士，比较文学与世界文学专业，拥有内容行业经验。<div>专注于人文、科技与叙事的交叉地带，主导「阅读兽 ReadingCub」大型通识阅读产品的完整内容开发流程——从知识框架搭建、书稿撰写、学术核校到成稿交付的全链路工作。</div><div>同时具备品牌文案策划、学术论文研究、AI工具链开发等多方面能力，为山水比德、纸条作文等项目提供专业内容服务。</div></p>
         </div>
         <div class="nav-links">
             <a href="#" onclick="navigate('biography'); return false;">个人简历</a>
@@ -55,7 +48,7 @@
 
     <!-- ===== 个人简历 ===== -->
     <div class="page-section active" id="biography">
-        <div class="section-header"><h2 contenteditable="true">Biography</h2></div>
+        <div class="section-header"><h2>Biography</h2></div>
         <div class="bio-wrapper">
             <div class="bio-sidebar">
                 <div class="bio-photo" id="bioPhotoContainer">
@@ -64,77 +57,77 @@
                     <div class="photo-hint">点击上传</div>
                     <input type="file" id="bioPhotoUpload" accept="image/*" style="display:none;">
                 </div>
-                <div class="bio-summary" contenteditable="true">比较文学硕士背景，兼具扎实的学术文献研读底蕴与极强的文字敏锐度。擅长将复杂逻辑转化为具有同理心与专业度的深度叙事，拥有主导万字级深度内容开发、独立撰写专题策划及高效对接政企持份者的实战经验。逻辑缜密，具备极强的执行力与跨部门协作意识。</div>
-                <h3 contenteditable="true">个人信息</h3>
-                <div class="bio-info-item" contenteditable="true"><span class="label">电话</span> 13329103960</div>
-                <div class="bio-info-item" contenteditable="true"><span class="label">邮箱</span> xiongyi1227@foxmail.com</div>
-                <div class="bio-info-item" contenteditable="true"><span class="label">居住地</span> 广州/北京</div>
-                <h3 contenteditable="true">教育背景</h3>
-                <div class="bio-info-item" contenteditable="true"><span class="label">暨南大学</span> 硕士 · 比较文学与世界文学 (2023-2026)</div>
-                <div class="bio-info-item" contenteditable="true"><span class="label">安徽师范大学</span> 本科 · 汉语言文学（师范）(2019-2023)</div>
-                <h3 contenteditable="true">荣誉资质</h3>
+                <div class="bio-summary">比较文学硕士背景，兼具扎实的学术文献研读底蕴与极强的文字敏锐度。擅长将复杂逻辑转化为具有同理心与专业度的深度叙事，拥有主导万字级深度内容开发、独立撰写专题策划及高效对接政企持份者的实战经验。逻辑缜密，具备极强的执行力与跨部门协作意识。</div>
+                <h3>个人信息</h3>
+                <div class="bio-info-item"><span class="label">电话</span> 13329103960</div>
+                <div class="bio-info-item"><span class="label">邮箱</span> xiongyi1227@foxmail.com</div>
+                <div class="bio-info-item"><span class="label">居住地</span> 广州/北京</div>
+                <h3>教育背景</h3>
+                <div class="bio-info-item"><span class="label">暨南大学</span> 硕士 · 比较文学与世界文学 (2023-2026)</div>
+                <div class="bio-info-item"><span class="label">安徽师范大学</span> 本科 · 汉语言文学（师范）(2019-2023)</div>
+                <h3>荣誉资质</h3>
                 <ul>
-                    <li contenteditable="true">高级中学语文教师资格证</li>
-                    <li contenteditable="true">普通话水平测试二级甲等</li>
-                    <li contenteditable="true">英语六级 (CET-6)</li>
-                    <li contenteditable="true">安徽省师范生教学大赛一等奖</li>
-                    <li contenteditable="true">连续三年获校级奖学金、优秀学生干部</li>
-                    <li contenteditable="true">中国青年网收录纪实报道作者</li>
+                    <li>高级中学语文教师资格证</li>
+                    <li>普通话水平测试二级甲等</li>
+                    <li>英语六级 (CET-6)</li>
+                    <li>安徽省师范生教学大赛一等奖</li>
+                    <li>连续三年获校级奖学金、优秀学生干部</li>
+                    <li>中国青年网收录纪实报道作者</li>
                 </ul>
-                <h3 contenteditable="true">核心标签</h3>
+                <h3>核心标签</h3>
                 <ul class="tag-list">
-                    <li contenteditable="true">规范文书</li>
-                    <li contenteditable="true">共情叙事</li>
-                    <li contenteditable="true">高效协调</li>
-                    <li contenteditable="true">撰稿与通俗化</li>
-                    <li contenteditable="true">品牌理解与传播</li>
+                    <li>规范文书</li>
+                    <li>共情叙事</li>
+                    <li>高效协调</li>
+                    <li>撰稿与通俗化</li>
+                    <li>品牌理解与传播</li>
                 </ul>
             </div>
             <div class="bio-main">
-                <div class="bio-name" contenteditable="true">熊 艺</div>
-                <div class="bio-target" contenteditable="true">求职意向：内容 / 策划 / 公共支持</div>
+                <div class="bio-name">熊 艺</div>
+                <div class="bio-target">求职意向：内容 / 策划 / 公共支持</div>
                 <div class="bio-section-title">核心工作经历（均为实习/兼职）</div>
                 <div class="bio-exp-block">
-                    <div class="bio-exp-head"><span class="bio-exp-company" contenteditable="true">北京知日文化传播有限公司</span><span class="bio-exp-time">2026.04 - 至今</span></div>
-                    <div class="bio-exp-role" contenteditable="true">内容开发（阅读兽 ReadingCub）</div>
+                    <div class="bio-exp-head"><span class="bio-exp-company">北京知日文化传播有限公司</span><span class="bio-exp-time">2026.04 - 至今</span></div>
+                    <div class="bio-exp-role">内容开发（阅读兽 ReadingCub）</div>
                     <ul class="bio-exp-details">
-                        <li contenteditable="true"><strong>海量文献研读与深度撰写：</strong>负责线上阅读社群及数字出版项目，主导《运动的奥义》《人形机器人》《人工智能编年史》等主题内容全流程开发。开展海量专业文献的搜集、整理、筛选与研读，累计1个月内完成超十万字优质中英文内容创作，保障内容的专业性与丰富度。</li>
-                        <li contenteditable="true"><strong>AI Native与SOP优化：</strong>熟练运用AI工具开展生图创作，并自主研发配套网页插件、skill等AI工具，形成并文档化一套万字完整内容开发工作流，大幅提升机构日常内容创作、宣传物料设计与资料库管理的行政效率。</li>
+                        <li><strong>海量文献研读与深度撰写：</strong>负责线上阅读社群及数字出版项目，主导《运动的奥义》《人形机器人》《人工智能编年史》等主题内容全流程开发。开展海量专业文献的搜集、整理、筛选与研读，累计1个月内完成超十万字优质中英文内容创作，保障内容的专业性与丰富度。</li>
+                        <li><strong>AI Native与SOP优化：</strong>熟练运用AI工具开展生图创作，并自主研发配套网页插件、skill等AI工具，形成并文档化一套万字完整内容开发工作流，大幅提升机构日常内容创作、宣传物料设计与资料库管理的行政效率。</li>
                     </ul>
                 </div>
                 <div class="bio-exp-block">
-                    <div class="bio-exp-head"><span class="bio-exp-company" contenteditable="true">广州山水比德设计股份有限公司</span><span class="bio-exp-time">2025.04 - 2025.07</span></div>
-                    <div class="bio-exp-role" contenteditable="true">品牌策划与文案编辑</div>
+                    <div class="bio-exp-head"><span class="bio-exp-company">广州山水比德设计股份有限公司</span><span class="bio-exp-time">2025.04 - 2025.07</span></div>
+                    <div class="bio-exp-role">品牌策划与文案编辑</div>
                     <ul class="bio-exp-details">
-                        <li contenteditable="true"><strong>官方公众号运营与品牌传讯：</strong>独立运营官方公众号，负责品牌传播及行业热点内容策划采写，优化视觉排版逻辑，提升品牌传播深度与用户粘性。</li>
-                        <li contenteditable="true"><strong>标准化内部文案体系搭建：</strong>撰写起草企业文化宣导、内部公文、通知及活动策划等文稿，规范内部沟通口径，确保各类文书表达专业规范。</li>
-                        <li contenteditable="true"><strong>品牌矩阵从0到1孵化：</strong>主导新公众号的定位规划、竞品对标分析与栏目设置，独立产出高水准首发内容，推动账号顺利上线并稳定运行。</li>
-                        <li contenteditable="true"><strong>多部门联动活动统筹执行：</strong>作为核心协调人，联动平面、建筑、技术等多部门，统筹公司级活动全流程方案、资源对接与现场执行。</li>
+                        <li><strong>官方公众号运营与品牌传讯：</strong>独立运营官方公众号，负责品牌传播及行业热点内容策划采写，优化视觉排版逻辑，提升品牌传播深度与用户粘性。</li>
+                        <li><strong>标准化内部文案体系搭建：</strong>撰写起草企业文化宣导、内部公文、通知及活动策划等文稿，规范内部沟通口径，确保各类文书表达专业规范。</li>
+                        <li><strong>品牌矩阵从0到1孵化：</strong>主导新公众号的定位规划、竞品对标分析与栏目设置，独立产出高水准首发内容，推动账号顺利上线并稳定运行。</li>
+                        <li><strong>多部门联动活动统筹执行：</strong>作为核心协调人，联动平面、建筑、技术等多部门，统筹公司级活动全流程方案、资源对接与现场执行。</li>
                     </ul>
                 </div>
                 <div class="bio-exp-block">
-                    <div class="bio-exp-head"><span class="bio-exp-company" contenteditable="true">深圳易宝软件有限公司</span><span class="bio-exp-time">2025.09 - 2025.12</span></div>
-                    <div class="bio-exp-role" contenteditable="true">AI训练专家（人文社科）</div>
+                    <div class="bio-exp-head"><span class="bio-exp-company">深圳易宝软件有限公司</span><span class="bio-exp-time">2025.09 - 2025.12</span></div>
+                    <div class="bio-exp-role">AI训练专家（人文社科）</div>
                     <ul class="bio-exp-details">
-                        <li contenteditable="true">参与豆包、DeepSeek等大模型的人文社科领域训练，设计针对性题目并进行逻辑标注。</li>
-                        <li contenteditable="true">负责语料库的结构化清理与质量审核，提升模型在复杂语境下的专业度。</li>
+                        <li>参与豆包、DeepSeek等大模型的人文社科领域训练，设计针对性题目并进行逻辑标注。</li>
+                        <li>负责语料库的结构化清理与质量审核，提升模型在复杂语境下的专业度。</li>
                     </ul>
                 </div>
                 <div class="bio-exp-block">
-                    <div class="bio-exp-head"><span class="bio-exp-company" contenteditable="true">广州启合科技有限公司</span><span class="bio-exp-time">2024.07 - 2024.11</span></div>
-                    <div class="bio-exp-role" contenteditable="true">内容编辑（纸条App）</div>
+                    <div class="bio-exp-head"><span class="bio-exp-company">广州启合科技有限公司</span><span class="bio-exp-time">2024.07 - 2024.11</span></div>
+                    <div class="bio-exp-role">内容编辑（纸条App）</div>
                     <ul class="bio-exp-details">
-                        <li contenteditable="true"><strong>热点稿件创作：</strong>撰写时事评论、东西方文化热点等稿件，内容贴合平台风格与用户需求，保障阅读体验。</li>
-                        <li contenteditable="true"><strong>移动端排版优化：</strong>优化稿件排版与内容结构，适配移动端阅读场景，提升页面可读性。</li>
-                        <li contenteditable="true"><strong>语文学习资料整合：</strong>整合语文学习类核心资料，提炼写作技巧、文化常识等干货内容，输出实用型图文。</li>
+                        <li><strong>热点稿件创作：</strong>撰写时事评论、东西方文化热点等稿件，内容贴合平台风格与用户需求，保障阅读体验。</li>
+                        <li><strong>移动端排版优化：</strong>优化稿件排版与内容结构，适配移动端阅读场景，提升页面可读性。</li>
+                        <li><strong>语文学习资料整合：</strong>整合语文学习类核心资料，提炼写作技巧、文化常识等干货内容，输出实用型图文。</li>
                     </ul>
                 </div>
                 <div class="bio-section-title">学术研究、公益调研与校园实践</div>
                 <div class="bio-exp-block">
                     <ul class="bio-exp-details">
-                        <li contenteditable="true"><strong>公益调研与纪实采编：</strong>主导安徽省滁州市「三下乡」农业脱贫调研。深入基层走访受助农户，撰写纪实报道《别忘了乡村的月光》，报道被中国青年网等国家级媒体平台收录。</li>
-                        <li contenteditable="true"><strong>文献搜集与申报辅助：</strong>读研期间协助导师完成广东省精品课程申报。全程参与资料筹备、文案撰写及宣讲PPT设计，确保申报流程规范，具备极强的信息检索与材料编制能力。</li>
-                        <li contenteditable="true"><strong>学术研究与逻辑推演：</strong>一作论文《神曲故事的现代位移与颠覆》发表于专业期刊《今古文创》（2025年第15期）。</li>
+                        <li><strong>公益调研与纪实采编：</strong>主导安徽省滁州市「三下乡」农业脱贫调研。深入基层走访受助农户，撰写纪实报道《别忘了乡村的月光》，报道被中国青年网等国家级媒体平台收录。</li>
+                        <li><strong>文献搜集与申报辅助：</strong>读研期间协助导师完成广东省精品课程申报。全程参与资料筹备、文案撰写及宣讲PPT设计，确保申报流程规范，具备极强的信息检索与材料编制能力。</li>
+                        <li><strong>学术研究与逻辑推演：</strong>一作论文《神曲故事的现代位移与颠覆》发表于专业期刊《今古文创》（2025年第15期）。</li>
                     </ul>
                 </div>
             </div>
@@ -143,14 +136,14 @@
 
     <!-- ===== 商业项目 ===== -->
     <div class="page-section" id="projects">
-        <div class="section-header"><h2 contenteditable="true">Projects</h2></div>
+        <div class="section-header"><h2>Projects</h2></div>
         <div class="projects-grid">
             <div class="project-card" onclick="location.href='projects/readingcub.html';">
                 <img src="assets/images/阅读兽logo.jpg" alt="阅读兽 ReadingCub" class="project-logo">
                 <div class="project-content">
-                    <h3 contenteditable="true">阅读兽 ReadingCub</h3>
-                    <p class="project-position" contenteditable="true">内容开发</p>
-                    <p class="project-description" contenteditable="true">大型通识阅读在线出版物，以「选书 x 关键词」双线内容架构为核心，涵盖科技、哲学、心理学等领域。主导完整内容开发流程并开发AI工具链。</p>
+                    <h3>阅读兽 ReadingCub</h3>
+                    <p class="project-position">内容开发</p>
+                    <p class="project-description">大型通识阅读在线出版物，以「选书 x 关键词」双线内容架构为核心，涵盖科技、哲学、心理学等领域。主导完整内容开发流程并开发AI工具链。</p>
                     <div class="project-tags"><span>EPUB</span><span>通识阅读</span><span>AI工具</span><span>学术核校</span></div>
                     <span class="project-link">查看详情</span>
                 </div>
@@ -158,9 +151,9 @@
             <div class="project-card" onclick="location.href='projects/shanshuibide.html';">
                 <img src="assets/images/山水比德logo.jpg" alt="山水比德" class="project-logo">
                 <div class="project-content">
-                    <h3 contenteditable="true">山水比德</h3>
-                    <p class="project-position" contenteditable="true">品牌文案</p>
-                    <p class="project-description" contenteditable="true">景观设计头部企业，专注于品牌故事、项目深度解读与行业洞察，负责微信公众号运营与内容策划。</p>
+                    <h3>山水比德</h3>
+                    <p class="project-position">品牌文案</p>
+                    <p class="project-description">景观设计头部企业，专注于品牌故事、项目深度解读与行业洞察，负责微信公众号运营与内容策划。</p>
                     <div class="project-tags"><span>品牌策划</span><span>公众号运营</span><span>文案体系</span></div>
                     <span class="project-link">查看详情</span>
                 </div>
@@ -168,9 +161,9 @@
             <div class="project-card" onclick="location.href='projects/piaotiao.html';">
                 <img src="assets/images/纸条作文logo.jpg" alt="纸条作文" class="project-logo">
                 <div class="project-content">
-                    <h3 contenteditable="true">纸条作文</h3>
-                    <p class="project-position" contenteditable="true">内容编辑</p>
-                    <p class="project-description" contenteditable="true">K12写作学习平台，为付费用户每日推送优质内容，包括「知识不在高处」「时事」「句子素材」「思想家」等栏目。</p>
+                    <h3>纸条作文</h3>
+                    <p class="project-position">内容编辑</p>
+                    <p class="project-description">K12写作学习平台，为付费用户每日推送优质内容，包括「知识不在高处」「时事」「句子素材」「思想家」等栏目。</p>
                     <div class="project-tags"><span>内容创作</span><span>移动端排版</span><span>K12教育</span></div>
                     <span class="project-link">查看详情</span>
                 </div>
@@ -178,9 +171,9 @@
             <div class="project-card" onclick="location.href='projects/others.html';">
                 <img src="assets/images/other-projects.jpg" alt="其他项目" class="project-logo" style="background:#f5f5f5; object-fit:contain; padding:40px;">
                 <div class="project-content">
-                    <h3 contenteditable="true">其他项目</h3>
-                    <p class="project-position" contenteditable="true">策展方案 / 品牌文案 / 公众号运营 / 编译</p>
-                    <p class="project-description" contenteditable="true">具身智能策展方案、BIGGER艺术书展、lokadhatu品牌文案、机器人前瞻科技编译等多元项目。</p>
+                    <h3>其他项目</h3>
+                    <p class="project-position">策展方案 / 品牌文案 / 公众号运营 / 编译</p>
+                    <p class="project-description">具身智能策展方案、BIGGER艺术书展、lokadhatu品牌文案、机器人前瞻科技编译等多元项目。</p>
                     <div class="project-tags"><span>策展</span><span>品牌文案</span><span>公众号运营</span><span>科技编译</span></div>
                     <span class="project-link">查看详情</span>
                 </div>
@@ -190,14 +183,14 @@
 
     <!-- ===== 学术论文 ===== -->
     <div class="page-section" id="papers">
-        <div class="section-header"><h2 contenteditable="true">Papers</h2></div>
+        <div class="section-header"><h2>Papers</h2></div>
         <div class="papers-list">
             <div class="paper-item">
                 <div class="paper-date">2025 | 第15期</div>
-                <h3 class="paper-title" contenteditable="true">《神曲》故事的现代位移与颠覆——解读《此房是我造》的文学符码</h3>
-                <p class="paper-journal" contenteditable="true"><em>今古文创</em> | 独立作者</p>
+                <h3 class="paper-title">《神曲》故事的现代位移与颠覆——解读《此房是我造》的文学符码</h3>
+                <p class="paper-journal"><em>今古文创</em> | 独立作者</p>
                 <div class="paper-abstract">
-                    <p contenteditable="true"><strong>摘要：</strong>本文从文学符码的视角出发，分析拉斯·冯·提尔电影《此房是我造》如何通过对但丁《神曲》叙事的现代位移与符号化改写，完成了对古典文本的当代重写。研究聚焦于影片对地狱图景的视觉化重构、主人公的「反-朝圣」叙事结构，以及古典惩罚意象的现代转译，揭示当代艺术如何借助经典文本的符码系统，构建对现代性暴力的批判性反思。</p>
+                    <p><strong>摘要：</strong>本文从文学符码的视角出发，分析拉斯·冯·提尔电影《此房是我造》如何通过对但丁《神曲》叙事的现代位移与符号化改写，完成了对古典文本的当代重写。研究聚焦于影片对地狱图景的视觉化重构、主人公的「反-朝圣」叙事结构，以及古典惩罚意象的现代转译，揭示当代艺术如何借助经典文本的符码系统，构建对现代性暴力的批判性反思。</p>
                 </div>
                 <div class="file-links">
                     <a href="files/学术论文/《神曲》故事的现代位移与颠覆-解读《此房是我造》的文学符码_熊艺.pdf" class="file-link" target="_blank" download="">下载全文PDF <span class="ext">PDF</span></a>
@@ -205,10 +198,10 @@
             </div>
             <div class="paper-item">
                 <div class="paper-date">2025</div>
-                <h3 class="paper-title" contenteditable="true">后亚文化转向：Parklife社群的空间生产与城市景观</h3>
-                <p class="paper-journal" contenteditable="true">学术论文 | 独立作者</p>
+                <h3 class="paper-title">后亚文化转向：Parklife社群的空间生产与城市景观</h3>
+                <p class="paper-journal">学术论文 | 独立作者</p>
                 <div class="paper-abstract">
-                    <p contenteditable="true"><strong>摘要：</strong>本文以广州Parklife社群为田野考察对象，运用后亚文化理论与空间生产理论，探讨当代青年社群如何通过音乐、舞蹈与公共空间重构，在城市景观中开辟另类的文化实践场域。研究揭示了后亚文化语境下，青年身份认同、空间政治与城市生活之间的复杂互动关系。</p>
+                    <p><strong>摘要：</strong>本文以广州Parklife社群为田野考察对象，运用后亚文化理论与空间生产理论，探讨当代青年社群如何通过音乐、舞蹈与公共空间重构，在城市景观中开辟另类的文化实践场域。研究揭示了后亚文化语境下，青年身份认同、空间政治与城市生活之间的复杂互动关系。</p>
                 </div>
                 <div class="file-links">
                     <a href="files/学术论文/后亚文化转向：Parklife社群的空间生产与城市景观.pdf" class="file-link" target="_blank" download="">下载全文PDF <span class="ext">PDF</span></a>
@@ -219,14 +212,14 @@
 
     <!-- ===== 个人创作 ===== -->
     <div class="page-section" id="works">
-        <div class="section-header"><h2 contenteditable="true">Works</h2></div>
+        <div class="section-header"><h2>Works</h2></div>
         <div class="works-grid">
             <!-- 剧本：黑夜深几许 -->
             <div class="work-card">
                 <div class="work-body">
                     <div class="work-label">长片剧本</div>
-                    <h3 class="work-title" contenteditable="true">黑夜深几许</h3>
-                    <p class="work-desc" contenteditable="true">一个破碎的家庭行于传销歧路拯救自己的故事。单亲父亲陷入传销组织，儿子在家庭裂变与情感纠葛中挣扎。四万余字长片剧本，以冷峻笔触描摹底层生存图景。</p>
+                    <h3 class="work-title">黑夜深几许</h3>
+                    <p class="work-desc">一个破碎的家庭行于传销歧路拯救自己的故事。单亲父亲陷入传销组织，儿子在家庭裂变与情感纠葛中挣扎。四万余字长片剧本，以冷峻笔触描摹底层生存图景。</p>
                     <div class="file-links">
                         <a href="files/创作作品/works_html/黑夜深几许 长片剧本.html" class="file-link" target="_blank">在线阅读 <span class="ext">HTML</span></a>
                     </div>
@@ -236,8 +229,8 @@
             <div class="work-card">
                 <div class="work-body">
                     <div class="work-label">剧本</div>
-                    <h3 class="work-title" contenteditable="true">轻轻地告诉你</h3>
-                    <p class="work-desc" contenteditable="true">温情题材剧本，展现人与人之间细腻的情感联结。发生在城市角落的小故事，以平淡真实的对话推进叙事。</p>
+                    <h3 class="work-title">轻轻地告诉你</h3>
+                    <p class="work-desc">温情题材剧本，展现人与人之间细腻的情感联结。发生在城市角落的小故事，以平淡真实的对话推进叙事。</p>
                     <div class="file-links">
                         <a href="files/创作作品/works_html/轻轻地告诉你.html" class="file-link" target="_blank">在线阅读 <span class="ext">HTML</span></a>
                     </div>
@@ -247,8 +240,8 @@
             <div class="work-card">
                 <div class="work-body">
                     <div class="work-label">短片剧本</div>
-                    <h3 class="work-title" contenteditable="true">散场之后</h3>
-                    <p class="work-desc" contenteditable="true">散场之后，故事才刚刚开始。以戏剧舞台为背景，探讨表演与真实的边界。</p>
+                    <h3 class="work-title">散场之后</h3>
+                    <p class="work-desc">散场之后，故事才刚刚开始。以戏剧舞台为背景，探讨表演与真实的边界。</p>
                     <div class="file-links">
                         <a href="files/创作作品/works_html/散场之后.html" class="file-link" target="_blank">在线阅读 <span class="ext">HTML</span></a>
                     </div>
@@ -258,8 +251,8 @@
             <div class="work-card">
                 <div class="work-body">
                     <div class="work-label">小说</div>
-                    <h3 class="work-title" contenteditable="true">在寻找疾病的时刻</h3>
-                    <p class="work-desc" contenteditable="true">以疾病为隐喻，探讨现代人的存在困境与自我救赎的可能性，叙事穿梭于现实与意识之间。</p>
+                    <h3 class="work-title">在寻找疾病的时刻</h3>
+                    <p class="work-desc">以疾病为隐喻，探讨现代人的存在困境与自我救赎的可能性，叙事穿梭于现实与意识之间。</p>
                     <div class="file-links">
                         <a href="files/创作作品/works_html/在寻找疾病的时刻.html" class="file-link" target="_blank">在线阅读 <span class="ext">HTML</span></a>
                     </div>
@@ -269,8 +262,8 @@
             <div class="work-card">
                 <div class="work-body">
                     <div class="work-label">诗歌</div>
-                    <h3 class="work-title" contenteditable="true">魚</h3>
-                    <p class="work-desc" contenteditable="true">2021年作。以鱼为意象，书写陆地生活的窒息感与对海洋的回归渴望。</p>
+                    <h3 class="work-title">魚</h3>
+                    <p class="work-desc">2021年作。以鱼为意象，书写陆地生活的窒息感与对海洋的回归渴望。</p>
                     <div class="file-links">
                         <a href="files/创作作品/works_html/魚.html" class="file-link" target="_blank">阅读 <span class="ext">HTML</span></a>
                     </div>
@@ -280,8 +273,8 @@
             <div class="work-card">
                 <div class="work-body">
                     <div class="work-label">诗歌</div>
-                    <h3 class="work-title" contenteditable="true">致中文系</h3>
-                    <p class="work-desc" contenteditable="true">2022年作。对「新生代诗群」的戏拟之作，以戏谑笔调调侃中文系的学术话语困境。</p>
+                    <h3 class="work-title">致中文系</h3>
+                    <p class="work-desc">2022年作。对「新生代诗群」的戏拟之作，以戏谑笔调调侃中文系的学术话语困境。</p>
                     <div class="file-links">
                         <a href="files/创作作品/works_html/致中文系.html" class="file-link" target="_blank">阅读 <span class="ext">HTML</span></a>
                     </div>
@@ -291,8 +284,8 @@
             <div class="work-card">
                 <div class="work-body">
                     <div class="work-label">非虚构 · 哲学随笔</div>
-                    <h3 class="work-title" contenteditable="true">真正的生活：一种没有"理念世界"作为保险的生活</h3>
-                    <p class="work-desc" contenteditable="true">2025年作。从柏拉图的洞穴寓言出发，探讨现代人的存在困境——如何在失去"理念世界"的担保之后，仍然肯定此刻此地的真实生活。</p>
+                    <h3 class="work-title">真正的生活：一种没有"理念世界"作为保险的生活</h3>
+                    <p class="work-desc">2025年作。从柏拉图的洞穴寓言出发，探讨现代人的存在困境——如何在失去"理念世界"的担保之后，仍然肯定此刻此地的真实生活。</p>
                     <div class="file-links">
                         <a href="files/创作作品/works_html/真正的生活.html" class="file-link" target="_blank">阅读 <span class="ext">HTML</span></a>
                     </div>
@@ -302,8 +295,8 @@
             <div class="work-card">
                 <div class="work-body">
                     <div class="work-label">非虚构 · 社会纪实</div>
-                    <h3 class="work-title" contenteditable="true">别忘了乡村的月光</h3>
-                    <p class="work-desc" contenteditable="true">2021年发表于中国青年网。跟随安徽师大实践队伍走访滁州天长，记录芡实种植户陈阿姨对土地的热爱与坚守。</p>
+                    <h3 class="work-title">别忘了乡村的月光</h3>
+                    <p class="work-desc">2021年发表于中国青年网。跟随安徽师大实践队伍走访滁州天长，记录芡实种植户陈阿姨对土地的热爱与坚守。</p>
                     <div class="file-links">
                         <a href="https://sxx.youth.cn/jxqc/gwsh/202203/t20220331_13573610.htm" class="file-link" target="_blank">中国青年网原文 <span class="ext">URL</span></a>
                     </div>
@@ -314,35 +307,35 @@
 
     <!-- ===== 联系方式 ===== -->
     <div class="page-section" id="contact">
-        <div class="section-header"><h2 contenteditable="true">Contact</h2></div>
+        <div class="section-header"><h2>Contact</h2></div>
         <div class="contact-wrapper">
             <div class="contact-grid">
                 <div class="contact-card">
                     <div class="contact-icon-box">电话</div>
                     <div class="contact-info">
-                        <h4 contenteditable="true">TELEPHONE</h4>
-                        <p contenteditable="true"><a href="tel:13329103960">13329103960</a></p>
+                        <h4>TELEPHONE</h4>
+                        <p><a href="tel:13329103960">13329103960</a></p>
                     </div>
                 </div>
                 <div class="contact-card">
                     <div class="contact-icon-box">邮箱</div>
                     <div class="contact-info">
-                        <h4 contenteditable="true">EMAIL</h4>
-                        <p contenteditable="true"><a href="mailto:xiongyi1227@foxmail.com">xiongyi1227@foxmail.com</a></p>
+                        <h4>EMAIL</h4>
+                        <p><a href="mailto:xiongyi1227@foxmail.com">xiongyi1227@foxmail.com</a></p>
                     </div>
                 </div>
                 <div class="contact-card">
                     <div class="contact-icon-box">小红书</div>
                     <div class="contact-info">
-                        <h4 contenteditable="true">XIAOHONGSHU</h4>
-                        <p contenteditable="true">卡列宁与牧歌</p>
+                        <h4>XIAOHONGSHU</h4>
+                        <p>卡列宁与牧歌</p>
                     </div>
                 </div>
                 <div class="contact-card">
                     <div class="contact-icon-box">IG</div>
                     <div class="contact-info">
-                        <h4 contenteditable="true">INSTAGRAM</h4>
-                        <p contenteditable="true"><a href="https://instagram.com/b1xist" target="_blank" rel="noopener">@b1xist</a></p>
+                        <h4>INSTAGRAM</h4>
+                        <p><a href="https://instagram.com/b1xist" target="_blank" rel="noopener">@b1xist</a></p>
                     </div>
                 </div>
             </div>
