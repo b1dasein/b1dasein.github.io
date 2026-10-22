@@ -138,6 +138,31 @@ nav a:hover { color: #222222; }
     padding: 24px 40px;
     background: #f8f8f8;
 }
+.drama-project-cover {
+    height: 200px;
+    padding: 25px 28px;
+    color: #f4efe4;
+    background:
+        linear-gradient(120deg, rgba(142, 40, 40, 0.92), rgba(23, 24, 27, 0.96)),
+        repeating-linear-gradient(90deg, transparent 0 43px, rgba(255,255,255,.08) 44px 45px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+.drama-project-cover::after {
+    content: "30";
+    position: absolute;
+    right: -12px;
+    bottom: -48px;
+    font-size: 150px;
+    line-height: 1;
+    font-weight: 700;
+    color: rgba(255,255,255,.07);
+}
+.drama-project-cover strong { font-size: 28px; line-height: 1.12; letter-spacing: .03em; z-index: 1; }
+.drama-cover-kicker, .drama-cover-meta { font-size: 10px; letter-spacing: .16em; z-index: 1; }
 .project-content {
     padding: 24px;
     flex-grow: 1;
