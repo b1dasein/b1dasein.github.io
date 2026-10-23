@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>作品在线预览 | 熊艺作品集</title>
+    <style>
+        *{box-sizing:border-box}html,body{height:100%;margin:0;background:#292929;font-family:Arial,"Noto Sans SC",sans-serif;color:#222}.viewer-head{height:58px;padding:0 20px;background:#fff;border-bottom:1px solid #ddd;display:grid;grid-template-columns:100px 1fr 150px;align-items:center;gap:14px;position:relative;z-index:2}.viewer-head a{color:#555;text-decoration:none;font-size:13px}.viewer-head strong{font-size:14px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pager{display:flex;align-items:center;justify-content:flex-end;gap:8px}.pager button{border:1px solid #ddd;background:#fff;color:#333;padding:6px 9px;border-radius:3px;cursor:pointer}.pager button:disabled{color:#bbb}.pager span{font-size:12px;color:#777;min-width:48px;text-align:center}.viewer-wrap{height:calc(100% - 58px);overflow:auto;padding:20px;text-align:center}.paper{display:inline-block;background:#fff;box-shadow:0 3px 16px rgba(0,0,0,.35);line-height:0}.paper canvas{display:block;max-width:100%;height:auto}.viewer-error{color:#fff;padding:40px}.loading{color:#ddd;padding:40px;font-size:13px}@media(max-width:600px){.viewer-head{grid-template-columns:72px 1fr 110px;padding:0 10px;gap:6px}.viewer-head strong{font-size:12px}.pager button{padding:5px 7px}.viewer-wrap{padding:10px}}
+    </style>
+</head>
+<body oncontextmenu="return false">
+    <header class="viewer-head"><a href="short-drama.html">返回作品页</a><strong id="title">作品在线预览</strong><div class="pager"><button id="prev" type="button" aria-label="上一页">‹</button><span id="page">—</span><button id="next" type="button" aria-label="下一页">›</button></div></header>
+    <main class="viewer-wrap" id="viewer"><div class="loading">正在加载作品…</div></main>
+    <script type="module">
+        import * as pdfjsLib from '../assets/vendor/pdfjs/pdf.min.mjs';
+        pdfjsLib.GlobalWorkerOptions.workerSrc='../assets/vendor/pdfjs/pdf.worker.min.mjs';
+        const docs={
+            'married-detail':['《渣男出轨后，我嫁给了他叔叔》详细版','../files/短剧项目/I_Married_My_Cheating_Exs_Billionaire_Uncle_60集海外短剧大纲_详细版.pdf'],
+            'married-outline':['《渣男出轨后，我嫁给了他叔叔》大纲版','../files/短剧项目/I_Married_My_Cheating_Exs_Billionaire_Uncle_60集海外短剧大纲.pdf'],
+            'janitor-bride':['《亿万富翁的保洁新娘》','../files/短剧项目/The Billionaire\'s Janitor Bride_30集完整剧本(1).pdf'],
+            'out-of-frame':['《画框之外》','../files/短剧项目/OUT_OF_FRAME_海外短剧选题开发案.pdf'],
+            'wife-3b':['《3B公寓里的妻子》','../files/短剧项目/THE_WIFE_IN_APARTMENT_3B_海外短剧选题开发案.pdf'],
+            'grandmother-script':['《我的祖母是神探》完整剧本','../files/短剧项目/我的祖母是神探/My_Grandmother_Is_a_Detective_30_Episode_Script.pdf'],
+            'grandmother-dossier':['《我的祖母是神探》开发资料','../files/短剧项目/我的祖母是神探/《我的祖母是神探》人物小传与剧情概述.pdf'],
+            'film-portfolio':['剧本与影像作品集','../files/作品集-剧本与影像.pdf']
+        };
+        const item=docs[new URLSearchParams(location.search).get('id')];
+        const viewer=document.getElementById('viewer');let pdf=null,current=1,rendering=false;
+        async function renderPage(number){if(!pdf||rendering)return;rendering=true;const page=await pdf.getPage(number);const base=page.getViewport({scale:1});const available=Math.max(280,Math.min(920,viewer.clientWidth-24));const scale=available/base.width;const viewport=page.getViewport({scale:scale*window.devicePixelRatio});const canvas=document.createElement('canvas');canvas.width=viewport.width;canvas.height=viewport.height;canvas.style.width=(viewport.width/window.devicePixelRatio)+'px';canvas.style.height=(viewport.height/window.devicePixelRatio)+'px';viewer.innerHTML='';const paper=document.createElement('div');paper.className='paper';paper.appendChild(canvas);viewer.appendChild(paper);await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;current=number;document.getElementById('page').textContent=current+' / '+pdf.numPages;document.getElementById('prev').disabled=current===1;document.getElementById('next').disabled=current===pdf.numPages;viewer.scrollTop=0;rendering=false}
+        if(item){document.title=item[0]+' | 熊艺作品集';document.getElementById('title').textContent=item[0];try{pdf=await pdfjsLib.getDocument(item[1]).promise;await renderPage(1)}catch(error){viewer.innerHTML='<p class="viewer-error">作品暂时无法加载。</p>'}}else{viewer.innerHTML='<p class="viewer-error">预览文件不存在。</p>'}
+        document.getElementById('prev').addEventListener('click',()=>renderPage(current-1));document.getElementById('next').addEventListener('click',()=>renderPage(current+1));
+    </script>
+</body>
+</html>
